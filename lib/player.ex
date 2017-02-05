@@ -1,6 +1,6 @@
 defmodule Gmylm.Player do
   @moduledoc """
-  Where we store info about the player and player methods
+  Where we store info about the Player and Player methods
   """
 
 end

@@ -33,4 +33,7 @@ defmodule Gmylm.Mixfile do
   defp deps do
     [{:credo, "~> 0.5", only: [:dev, :test]}]
   end
+
+  defp elixirc_paths(:test), do: ["lib", "test/test_helpers"]
+  defp elixirc_paths(_), do: ["lib"]
 end
