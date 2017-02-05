@@ -1,6 +1,6 @@
 defmodule Gmylm.Player do
   @moduledoc """
-  Where we store info about the Player and Player methods
+  Player data structure and Player functions
   """
-
+  defstruct location: nil, inventory: []
 end

@@ -1,6 +1,6 @@
 defmodule Gmylm.World.Object do
   @moduledoc """
-  Where we store info about Objects and Object functions
+  Object data structure and Object functions
   """
 
   @doc """
