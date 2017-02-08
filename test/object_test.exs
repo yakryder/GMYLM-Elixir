@@ -2,7 +2,7 @@ defmodule Gmylm.World.ObjectTest do
   @moduledoc """
     Tests the GMYLM Object functions and data
   """
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   alias Gmylm.World.Object
 
   doctest Object

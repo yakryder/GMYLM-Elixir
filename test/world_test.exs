@@ -2,7 +2,7 @@ defmodule Gmylm.WorldTest do
   @moduledoc """
     Tests the World module
   """
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   alias Gmylm.World
 
   doctest World

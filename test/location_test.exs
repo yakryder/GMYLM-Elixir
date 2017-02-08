@@ -2,7 +2,7 @@ defmodule Gmylm.World.LocationTest do
   @moduledoc """
     Tests the GMYLM location functions and data
   """
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias Gmylm.World.Location
   alias Gmylm.World.Object

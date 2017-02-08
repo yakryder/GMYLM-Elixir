@@ -2,7 +2,7 @@ defmodule GmylmTest do
   @moduledoc """
     Tests that GMYLM has needed submodules
   """
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest Gmylm
 
   test "it exists" do
