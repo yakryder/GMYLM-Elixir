@@ -6,5 +6,5 @@ defmodule Gmylm.World.Object do
   @doc """
   Struct for Objects.
   """
-  defstruct ground_description: nil
+  defstruct name: nil, ground_description: nil
 end
