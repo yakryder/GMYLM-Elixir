@@ -3,22 +3,28 @@ defmodule Gmylm.Player do
   Player data structure and Player functions
   """
   alias Gmylm.Player
+  alias Gmylm.World.Location
+  alias Gmylm.World.Object
 
   defstruct location: nil, inventory: []
 
-  def move(%Player{} = player, 'north' = direction) do
+  def move(%Player{} = player, 'north') do
     %Player{player | location: player.location.north}
   end
 
-  def move(%Player{} = player, 'east' = direction) do
+  def move(%Player{} = player, 'east') do
     %Player{player | location: player.location.east}
   end
 
-  def move(%Player{} = player, 'west' = direction) do
+  def move(%Player{} = player, 'west') do
     %Player{player | location: player.location.west}
   end
 
-  def move(%Player{} = player, 'south' = direction) do
+  def move(%Player{} = player, 'south') do
     %Player{player | location: player.location.south}
+  end
+
+  def pick_up(%Player{} = player, %Object{} = object) do
+    %Player{player | inventory: player.inventory ++ [object]}
   end
 end
