@@ -25,6 +25,7 @@ defmodule Gmylm.Player do
   end
 
   def pick_up(%Player{} = player, %Object{} = object) do
-    %Player{player | inventory: player.inventory ++ [object]}
+    {%Player{player | inventory: player.inventory ++ [object]},
+    Location.remove_object(object, player.location)}
   end
 end
