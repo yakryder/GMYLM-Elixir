@@ -21,8 +21,13 @@ defmodule Gmylm.World.Location do
   @doc """
   Removes an object from a location.
   """
-
+# I want to only try to remove objects if that location has objects.
+# or raise the dang error
   def remove_object(%Object{} = object, %Location{} = current_location) do
-    %Location{current_location | on_ground: List.delete(current_location.on_ground, object)}
+    cond do
+      Enum.empty?(current_location.on_ground) -> {:error, "not found"}
+      Enum.any?(current_location.on_ground) ->
+        %Location{current_location | on_ground: List.delete(current_location.on_ground, object)}
+    end
   end
 end

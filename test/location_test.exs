@@ -107,5 +107,9 @@ defmodule Gmylm.World.LocationTest do
       basement_removed_from = Location.remove_object(balloon, basement_w_balloon)
       assert basement_removed_from.description == basement.description
     end
+
+    test "it raises an error if the object isn't there", %{basement: basement, balloon: balloon} do
+      assert Location.remove_object(balloon, basement) == {:error, "not found"}
+    end
   end
 end
