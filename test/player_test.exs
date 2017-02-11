@@ -10,14 +10,14 @@ defmodule Gmylm.PlayerTest do
   doctest Player
 
   setup_all do
-    player = %Player{}
     spoiled_milk_bomb = %Object{name: "Spoiled Milk Bomb"}
     dart_gun          = %Object{name: "Dart Gun"}
     poop_trap         = %Object{name: "Poop Trap"}
-    north_room = %Location{north: %Location{name: "Move north"}, on_ground: dart_gun}
-    east_room  = %Location{east: %Location{name: "Move east", on_ground: poop_trap}}
+    north_room = %Location{north: %Location{name: "Move north"}, on_ground: [dart_gun]}
+    east_room  = %Location{east: %Location{name: "Move east", on_ground: [poop_trap]}}
     west_room  = %Location{west: %Location{name: "Move west"}}
-    south_room = %Location{south: %Location{name: "Move south"}, on_ground: spoiled_milk_bomb}
+    south_room = %Location{south: %Location{name: "Move south"}, on_ground: [spoiled_milk_bomb]}
+    player = %Player{location: south_room}
     {:ok, north_room: north_room, east_room: east_room, west_room: west_room, south_room: south_room,
      player: player, spoiled_milk_bomb: spoiled_milk_bomb, dart_gun: dart_gun, poop_trap: poop_trap}
   end
@@ -42,7 +42,7 @@ defmodule Gmylm.PlayerTest do
     test "player can move east when a location exists to the east", %{east_room: east_room, poop_trap: poop_trap} do
       player            = %Player{location: east_room}
       player_moved_east = Player.move(player, 'east')
-      assert player_moved_east.location == %Location{name: "Move east", on_ground: poop_trap}
+      assert player_moved_east.location == %Location{name: "Move east", on_ground: [poop_trap]}
     end
 
     test "player can move west when a location exists to the west", %{west_room: west_room} do
@@ -60,15 +60,15 @@ defmodule Gmylm.PlayerTest do
 
   describe "pick_up/2" do
     test "picking up an object in player's location adds it to the inventory", %{player: player, spoiled_milk_bomb: spoiled_milk_bomb, south_room: south_room} do
-      player_in_south_room  = %Player{player | location: south_room}
-      {player, _location} = Player.pick_up(player, spoiled_milk_bomb)
-      assert player.inventory == [spoiled_milk_bomb]
+      {pick_up_status, player_picked_up, {_remove_object_status, _location}} = Player.pick_up(player, spoiled_milk_bomb)
+      assert pick_up_status == :ok
+      assert player_picked_up.inventory == [spoiled_milk_bomb]
     end
 
-    test "picking up an object in player's location removes it from the ground", %{player: player, dart_gun: dart_gun, north_room: north_room} do
-      player_in_north_room = %Player{player | location: north_room}
-      player_with_dart_gun = Player.pick_up(player, dart_gun)
-      assert player_with_dart_gun.inventory == [dart_gun]
+    test "picking up an object in player's location removes it from the ground", %{player: player, spoiled_milk_bomb: spoiled_milk_bomb, north_room: north_room} do
+      {_pick_up_status, _player, {remove_object_status, location}} = Player.pick_up(player, spoiled_milk_bomb)
+      assert remove_object_status == :ok
+      assert location.on_ground == []
     end
   end
 end

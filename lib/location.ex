@@ -25,9 +25,10 @@ defmodule Gmylm.World.Location do
 # or raise the dang error
   def remove_object(%Object{} = object, %Location{} = current_location) do
     cond do
-      Enum.empty?(current_location.on_ground) -> {:error, "not found"}
-      Enum.any?(current_location.on_ground) ->
-        %Location{current_location | on_ground: List.delete(current_location.on_ground, object)}
+      Enum.empty?(current_location.on_ground) -> {:error, "there is nothing there"}
+      Enum.member?(current_location.on_ground, object) ->
+        {:ok, %Location{current_location | on_ground: List.delete(current_location.on_ground, object)}}
+      true -> {:error, "there is no #{object.name} here"}
     end
   end
 end

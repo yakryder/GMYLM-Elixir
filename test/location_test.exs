@@ -91,7 +91,8 @@ defmodule Gmylm.World.LocationTest do
 
   describe "Location.remove_object/2" do
     test "it removes the specified object from the specified location", %{balloon: balloon, basement_w_balloon: basement_w_balloon} do
-      empty_basement = Location.remove_object(balloon, basement_w_balloon)
+      {status, empty_basement} = Location.remove_object(balloon, basement_w_balloon)
+      assert status == :ok
       assert empty_basement.on_ground == []
     end
 
@@ -99,17 +100,23 @@ defmodule Gmylm.World.LocationTest do
       %{location_w_objects: location_w_objects, spoiled_milk_bomb: spoiled_milk_bomb,
         dart_gun: dart_gun, cayenne_pepper: cayenne_pepper} do
         assert location_w_objects.on_ground == [spoiled_milk_bomb, dart_gun, cayenne_pepper]
-        removed_from_location_w_objects = Location.remove_object(dart_gun, location_w_objects)
+        {status, removed_from_location_w_objects} = Location.remove_object(dart_gun, location_w_objects)
+        assert status == :ok
         assert removed_from_location_w_objects.on_ground == [spoiled_milk_bomb, cayenne_pepper]
     end
 
     test "when removing an object it preserves the unmodified data of the specified location", %{balloon: balloon, basement: basement, basement_w_balloon: basement_w_balloon} do
-      basement_removed_from = Location.remove_object(balloon, basement_w_balloon)
-      assert basement_removed_from.description == basement.description
+      {status, basement_w_balloon_removed} = Location.remove_object(balloon, basement_w_balloon)
+      assert status == :ok
+      assert basement_w_balloon_removed.description == basement.description
     end
 
-    test "it raises an error if the object isn't there", %{basement: basement, balloon: balloon} do
-      assert Location.remove_object(balloon, basement) == {:error, "not found"}
+    test "it returns 'there is nothing there' error if the location's on_ground is empty", %{balloon: balloon, basement: basement} do
+      assert Location.remove_object(balloon, basement) == {:error, "there is nothing there"}
+    end
+
+    test "it returns an error if the object isn't there", %{basement_w_balloon: basement_w_balloon, dart_gun: dart_gun} do
+      assert Location.remove_object(dart_gun, basement_w_balloon) == {:error, "there is no Dart Gun here"}
     end
   end
 end
