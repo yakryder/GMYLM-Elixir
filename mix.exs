@@ -18,7 +18,7 @@ defmodule Gmylm.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger]]
+    [extra_applications: [:logger, :yaml_elixir]]
   end
 
   # Dependencies can be Hex packages:
@@ -31,7 +31,8 @@ defmodule Gmylm.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:credo, "~> 0.5", only: [:dev, :test]}]
+    [{:credo, "~> 0.5", only: [:dev, :test]},
+     {:yaml_elixir, "~> 1.3.0"}]
   end
 
   defp elixirc_paths(:test), do: ["lib", "test/test_helpers"]
