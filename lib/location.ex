@@ -11,6 +11,23 @@ defmodule Gmylm.World.Location do
   defstruct name: nil, description: nil, on_ground: [], north: nil, east: nil, south: nil, west: nil, up: nil, down: nil
 
   @doc """
+  Initializes the game locations as %Location{} structs.
+  There should be 22 locations, and everyone should be a %Location
+
+  Examples:
+    iex> Location.initialize_locations |> Enum.count
+    22
+
+    iex> Location.initialize_locations |> Enum.all?(fn(element) -> element.__struct__ == Gmylm.World.Location end )
+    true
+  """
+
+  def initialize_locations do
+    YamlElixir.read_from_file("lib/location_data.yml") |>
+    Enum.map(fn(location_map) -> Map.merge(%Location{}, location_map) end)
+  end
+
+  @doc """
   Adds an object to a location.
   """
 
