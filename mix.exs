@@ -35,6 +35,6 @@ defmodule Gmylm.Mixfile do
      {:yaml_elixir, "~> 1.3.0"}]
   end
 
-  defp elixirc_paths(:test), do: ["lib", "test/test_helpers"]
+  # defp elixirc_paths(:test), do: ["lib", "test/test_helpers"]
   defp elixirc_paths(_), do: ["lib"]
 end

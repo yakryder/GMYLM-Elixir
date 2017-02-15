@@ -22,6 +22,8 @@ defmodule Gmylm.World.Location do
     true
   """
 
+  @spec initialize_locations :: [%Location{}]
+
   def initialize_locations do
     YamlElixir.read_from_file("lib/location_data.yml") |>
     Enum.map(fn(location_map) -> Map.merge(%Location{}, location_map) end)
@@ -30,6 +32,8 @@ defmodule Gmylm.World.Location do
   @doc """
   Adds an object to a location.
   """
+
+  @spec add_object(%Object{}, %Location{}) :: %Location{}
 
   def add_object(%Object{} = object, %Location{} = current_location) do
     %Location{current_location | on_ground: current_location.on_ground ++ [object]}
@@ -40,6 +44,9 @@ defmodule Gmylm.World.Location do
   """
 # I want to only try to remove objects if that location has objects.
 # or raise the dang error
+
+  @spec remove_object(%Object{}, %Location{}) :: {atom, any}
+
   def remove_object(%Object{} = object, %Location{} = current_location) do
     cond do
       Enum.empty?(current_location.on_ground) -> {:error, "there is nothing there"}

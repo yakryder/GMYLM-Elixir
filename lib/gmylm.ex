@@ -3,7 +3,4 @@ defmodule Gmylm do
   Documentation for GMYLM.
   """
 
-  def hello do
-    :world
-  end
 end
