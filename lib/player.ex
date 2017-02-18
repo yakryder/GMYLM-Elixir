@@ -23,19 +23,19 @@ defmodule Gmylm.Player do
 
   @spec move(%Player{}, list) :: %Player{}
 
-  def move(%Player{} = player, "north") do
+  def move(%Player{} = player, :north) do
     %Player{player | location: player.location.north}
   end
 
-  def move(%Player{} = player, "east") do
+  def move(%Player{} = player, :east) do
     %Player{player | location: player.location.east}
   end
 
-  def move(%Player{} = player, "west") do
+  def move(%Player{} = player, :west) do
     %Player{player | location: player.location.west}
   end
 
-  def move(%Player{} = player, "south") do
+  def move(%Player{} = player, :south) do
     %Player{player | location: player.location.south}
   end
 

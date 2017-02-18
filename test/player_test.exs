@@ -35,25 +35,25 @@ defmodule Gmylm.PlayerTest do
   describe "move/2" do
     test "player can move north when a location exists to the north", %{north_room: north_room} do
       player             = %Player{location: north_room}
-      player_moved_north = Player.move(player, "north")
+      player_moved_north = Player.move(player, :north)
       assert player_moved_north.location == %Location{name: "Move north"}
     end
 
     test "player can move east when a location exists to the east", %{east_room: east_room, poop_trap: poop_trap} do
       player            = %Player{location: east_room}
-      player_moved_east = Player.move(player, "east")
+      player_moved_east = Player.move(player, :east)
       assert player_moved_east.location == %Location{name: "Move east", on_ground: [poop_trap]}
     end
 
     test "player can move west when a location exists to the west", %{west_room: west_room} do
       player            = %Player{location: west_room}
-      player_moved_west = Player.move(player, "west")
+      player_moved_west = Player.move(player, :west)
       assert player_moved_west.location == %Location{name: "Move west"}
     end
 
     test "player can move south when a location exists to the south", %{south_room: south_room} do
       player             = %Player{location: south_room}
-      player_moved_south = Player.move(player, "south")
+      player_moved_south = Player.move(player, :south)
       assert player_moved_south.location == %Location{name: "Move south"}
     end
   end
