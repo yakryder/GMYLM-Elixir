@@ -3,4 +3,7 @@ defmodule Gmylm do
   Documentation for GMYLM.
   """
 
+  def start_game do
+  
+  end
 end
