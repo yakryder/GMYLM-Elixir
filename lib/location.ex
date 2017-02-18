@@ -25,8 +25,8 @@ defmodule Gmylm.World.Location do
   @spec initialize_locations :: [%Location{}]
 
   def initialize_locations do
-    "lib/location_data.yml"   |>
-    YamlElixir.read_from_file |>
+    "lib/location_data.yml"                |>
+    YamlElixir.read_from_file(atoms: true) |>
     Enum.map(fn(location_map) -> Map.merge(%Location{}, location_map) end)
   end
 
