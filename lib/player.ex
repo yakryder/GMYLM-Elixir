@@ -21,22 +21,22 @@ defmodule Gmylm.Player do
     %Player{}
   end
 
-  @spec move(%Player{}, list) :: %Player{}
+  @spec move(atom, %Player{}, [%Location{}]) :: { atom, %Player{}, [%Location{}] }
 
-  def move(%Player{} = player, :north) do
-    %Player{player | location: player.location.north}
+  def move(:north, %Player{} = player, [%Location{}|_] = world) do
+    { :ok, %Player{player | location: player.location.north}, world }
   end
 
-  def move(%Player{} = player, :east) do
-    %Player{player | location: player.location.east}
+  def move(:east, %Player{} = player, [%Location{}|_] = world) do
+    { :ok, %Player{player | location: player.location.east}, world }
   end
 
-  def move(%Player{} = player, :west) do
-    %Player{player | location: player.location.west}
+  def move(:south, %Player{} = player, [%Location{}|_] = world) do
+    { :ok, %Player{player | location: player.location.south}, world }
   end
 
-  def move(%Player{} = player, :south) do
-    %Player{player | location: player.location.south}
+  def move(:west, %Player{} = player, [%Location{}|_] = world) do
+    { :ok, %Player{player | location: player.location.west}, world }
   end
 
   @spec pick_up(%Player{}, %Object{}) :: {atom, %Player{}, %Object{}}
