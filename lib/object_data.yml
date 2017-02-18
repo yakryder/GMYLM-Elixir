@@ -1,281 +1,250 @@
 ---
-
-- name: Balloon
-        GROUNDDESC: 'A deflated balloon rests here, looking sad and unloved.',
-        SHORTDESC: 'the balloon',
-        LONGDESC: "I think this is actually a water balloon!  Anyway, I could fill it with something from the fridge I'm sure.",
-        DESCWORDS: ['balloon', 'ball']},
-- name: Spoiled Milk
-        GROUNDDESC: "There's some spoiled milk here.",
-        SHORTDESC: 'spoiled milk',
-        LONGDESC: "The spoiled milk would make a great trap!  It'll go best in one of those old water balloons we used to play with.",
-        DESCWORDS: ['spoiled', 'milk', 'spoiled milk']},
-    'Automatic Solar-Powered 6-Inch Hole-Digger': {
-        GROUNDDESC: "The automatic, solar-powered 6-inch hole-digger has been left here.",
-        SHORTDESC: 'automatic, solar-powered 6-inch hole-digger',
-        LONGDESC: "The automatic, solar-powered 6-inch hole-digger is one of my best inventions.  Unfortunately, it's not going to be useful as a trap by itself.  The solar cell energy just isn't powerful enough.",
-        DESCWORDS: ['automatic, solar-powered 6-inch hole-digger', 'automatic digger', 'dig', 'auto', 'automatic', 'automatic solar', 'solar']},
-- name: Bathroom Counter
-        SHORTDESC: 'bathroom counter',
-        LONGDESC: "There isn't anything in the sinks, and the counter is pretty clean.  They keep toothbrushing stuff on the counter.",
-        DESCWORDS: ['bathroom count', 'bathroom counter', 'counter'],
-        HAS: ['Toothbrush']},
-- name: Black Pepper Bombs
-        GROUNDDESC: 'There are some black pepper bombs here, ready to dispense sneezy justice.',
-        SHORTDESC: 'black pepper bombs',
-        LONGDESC: "These pepper bombs are sure to cause irritation and sneezing on impact!  I will need a trigger and a launcher to set these up.",
-        DESCWORDS: ['black', 'pepper', 'black pepper', 'pepper bombs', 'pep bombs', 'pep', 'black pepper bombs'],
-        PARTS: ['Ground Black Pepper', 'Coffee Filters'],
-        ASSEMBLEMSG: 'I dump some ground pepper into a few coffee filters, to make pepper bombs.  These are sure to have the bullies sneezing for hours!', # AssembleMSG only for traps
-        SETUP: False,
-        SETUPMSG: 'I put the black pepper bombs at the top of the slide, where they can be ramped off the bottom at a bully.',
-        SETUPDESC: 'The black pepper bombs are sitting at the top of the slide, hidden from view.',
-        SETUPGD: 'The black pepper bombs are resting at the top of the slide.'},
-- name: Branches and Needles
-        SHORTDESC: 'branches and needles',
-        LONGDESC: "The branches and needles that I use to cover the secret stash are here.  They are old and brown, and conceal it pretty well.",
-        DESCWORDS: ['branches', 'needles', 'branches and needles', 'branch', 'need'],
-        TAKEABLE: False},
-- name: Bucket of Mud
-        GROUNDDESC: 'There\ns a bucket full of gushy grimy mud on the ground',
-        SHORTDESC: 'a bucket of mud',
-        LONGDESC: "The bucket of mud trap can be propped up somewhere and setup to spill on someone when a trigger is activated.",
-        DESCWORDS: ['spoiled', 'milk', 'bomb', 'spoiled milk bomb'],
-        PARTS: ['Bucket', 'Mud'],
-        ASSEMBLEMSG: 'I take a nice big scoop of mud in the bucket.  This stuff is yucky.  I can\'t wait to dump it on someone!',
-        SETUP: False,
-        SETUPMSG: 'I prop the mud bucket up on the top of the monkey bars where it can dump its contents on an unsuspecting bully below.',
-        SETUPDESC: 'The bucket of mud was hard to hoist up onto the monkey bars, but it will cover anyone below it when it spills.',
-        SETUPGD: 'The bucket of mud is sitting up on top of the monkey bars.'},
-- name: Carvings of People Dancing
-        SHORTDESC: 'carvings',
-        LONGDESC: "The designs in the stone of the school are my favorite part.  The people dancing look like they're having a lot of fun, and the gears make me think of learning about inventions and making things!",
-        DESCWORDS: ['carving', 'carvings', 'people dancing', 'carvings of people dancing', 'carving of people dancing', 'dancing', 'carving of gears', 'gears', 'gear'],
-        TAKEABLE: False}, # Only for untakeables
-- name: Cider Vinegar
-        GROUNDDESC: 'There\s some cider vinegar here.',
-        SHORTDESC: 'cider vinegar',
-        LONGDESC: "Ew this stuff smells like feet.",
-        DESCWORDS: ['cider', 'vinegar', 'cider vinegar', 'cid vin', 'cid', 'vin']},
-- name: Cider Vinegar Gun Trap
-        GROUNDDESC: 'There\s some cider vinegar here.',
-        SHORTDESC: 'cider vinegar gun trap',
-        LONGDESC: "I'll set this up so it'll shoot a bully in the pants!  The vinegar smells awful, and it's gonna be pretty embarrassing for whoever it hits!",
-        DESCWORDS: ['cider', 'vinegar', 'cider vinegar', 'cid vin', 'cid', 'vin', 'cv gun', 'cvg', 'cvgt'],
-        PARTS: ['Cider Vinegar', 'Water Gun'],
-        ASSEMBLEMSG: 'I pour the whole bottle of smelly cider vinegar into the water gun.  I can\'t wait to spray somebody with this smelly stuff!  Now I have a vinegar gun trap!',
-        SETUP: False,
-        SETUPMSG: 'I wedge the vinegar gun into the tire swing.  It\'s pumped and ready to fire.',
-        SETUPDESC: 'The cider vinegar gun is wedged firmly into the tire swing, ready to shoot its stinky ammunition all over a bully.',
-        SETUPGD: 'I can see the cider vinegar gun\'s nozzle poking out of the tire swing.'},
-- name: Cleaning Supplies Cabinet
-        SHORTDESC: 'cleaning supplies cabinet',
-        LONGDESC: "The cleaning supplies cabinet is an old wooden cabinet.  Dad does most of the cleaning, but sometimes I go in here for some ingredients in my chemistry experiments.",
-        DESCWORDS: ['clean', 'supplies', 'cab', 'cabinet', 'cleaning supplies', 'supplies cabinet', 'sup'],
-        TAKEABLE: False,
-        HAS: ['Bucket'],
-        OPEN: False},
-- name: Dad's Tackle Box
-        SHORTDESC: 'Dad\s tackle box',
-        LONGDESC: "Dad's tackle box is full of fishing supplies, I bet I could use something in there.",
-        DESCWORDS: ['Dad', 'Dad\'s', 'tackle', 'box', 'Dad\'s box', 'Dad\'s tackle', 'Dad\'s tackle box'],
-        TAKEABLE: False,
-        HAS: ['Small Metal Key'],
-        OPEN: False},
-- name: Dart Gun
-        GROUNDDESC: 'There\s an awesome-looking dart gun here. My awesome-looking dart gun.',
-        SHORTDESC: 'a dart gun',
-        ALTSD: 'a loaded dart gun',
-        LONGDESC: "This dart gun is really cool.  It uses the force of air created by a plunger and springs to propel ... well, it's no good without a dart, first of all.",
-        ALTLD: "I put the dart in the gun.  Pretty simple really.  I just know it's a good idea.",
-        LOADED: False,
-        DESCWORDS: ['dart', 'gun', 'dart gun', 'dg', 'awesome'],
-        ALTDW: ['loaded', 'ldg']},
-- name: Dining Room Table
-        SHORTDESC: 'Dining Room table',
-        LONGDESC: "The Dining Room table is a big wooden table.  I remember when I was shorter than it, since it's one of the tallest pieces of furniture in the house.",
-        DESCWORDS: ['dining table', 'table', 'room table', 'dining room table', 'drt'],
-        TAKEABLE: False},
-- name: Fishing Line   # GROUNDDESC and LONGDESC need to change when bullies destroy the fortress
-        GROUNDDESC: 'Why is that fishing line just sitting there? It\s time to build my drawbridge!',
-        SHORTDESC: 'fishing line',
-        LONGDESC: "I remember I got this fishing line from the creek.  I untangled it and stuck it in my secret stash.  It's not as cool as the NO2 cartridges I used to have in the stash, but I know it's gonna work on the drawbridge!",
-        DESCWORDS: ['fish', 'line', 'fishing', 'fishing line', 'fl']},
-- name: Front Spigot
-        SHORTDESC: 'the spigot',
-        LONGDESC: "It's a little metal spigot.  Sometimes it drips a bit, and if it goes too long, the ground behind the garden gets all muddy, but the water is clean.  I use it to water the flowers, with the hose.",
-        DESCWORDS: ['spigot', 'faucet', 'water', 'spg', 'spgt'],
-        OPEN: False,
-        TAKEABLE: False},
-- name: Ground Black Pepper
-        GROUNDDESC: 'Somebody left a balloon filled with spoiled milk on the floor. Gross.',
-        SHORTDESC: 'ground black pepper',
-        LONGDESC: "Ground black pepper is better than whole peppercorns, but it can make you sneeze if you're not careful.",
-        DESCWORDS: ['ground', 'pepper', 'black pepper', 'ground black', 'pep', 'gp', 'gbp']},
-- name: Guadachangan Flag
-        SHORTDESC: 'Guadachangan flag',
-        LONGDESC: "I remember from class that the green stripes are for Juan Carlos and Felix, the two friends who founded Guadachango, but the guitar & rowboat were not on the study guide, so I forgot.",
-        DESCWORDS: ['guadachanga', 'guadachangan flag', 'flag', 'gf', 'guadachangan'],
-        TAKEABLE: False},
-- name: Hankin Elementary School
-        GROUNDDESC: 'Somebody left a balloon filled with spoiled milk on the floor. Gross.',
-        SHORTDESC: 'spoiled milk bomb',
-        LONGDESC: "I spent the whole day in school . . . now I'm ready to get to the park.", # needs to change after Bullies destroy fortress
-        DESCWORDS: ['hankin', 'elementary', 'school', 'hankin elementary', 'hankin school', 'school', 'skool', 'elementary school', 'hes'],
-        TAKEABLE: False},
-- name: Instant Poop Trap
-        GROUNDDESC: 'The instant poop trap is lying here, looking very suspicious.',
-        SHORTDESC: 'the instant poop trap',
-        LONGDESC: "I'll set this up with a trigger and tomorrow it'll shoot a bully in the butt!  I can hardly wait!",
-        DESCWORDS: ['instant', 'poop', 'trap', 'instapoop', 'instant poop trap', 'instant poop', 'poop trap', 'ipt'],
-        PARTS: ['Mud', 'Water Gun'],
-        ASSEMBLEMSG: 'I scoop up some mud and pour it into the water gun.  It\'s pretty gross.  In fact, the mud kinda looks like poop.  I could shoot somebody in the butt with this!  Now I\'ve got an instant poop trap!',
-        SETUPMSG: 'I pump the water gun so it\'s primed and ready to fire.  I set the trap up by wedging it into the tic-tac-toe board, where it can fire a blast of poop-like liquid at my enemy\'s butt.',
-        SETUPDESC: 'The mud-filled water gun is stuck firmly in the tic-tac-toe board.  It\'s aimed at a downward angle so it can hit you in the butt.',
-        SETUPGD: ' I can see the handle of the water gun poking out of the tic-tac-toe board.'},
-- name: Jungle Gym # at the moment, don't know what to do with post-trap-setup addition: 'This particular jungle gym has a pair of Rare Bear Underwear dangling ominously from it.'
-        GROUNDDESC: 'Somebody left a balloon filled with spoiled milk on the floor. Gross.',
-        SHORTDESC: 'the jungle gym',
-        LONGDESC: "The jungle gym is a metal dome. You can climb around on it and swing from it and stuff.",
-        DESCWORDS: ['jungle', 'gym', 'jungle gym', 'jg', 'jung'],
-        TAKEABLE: False},
-    'Junk & Tools Cabinets': {
-        SHORTDESC: 'junk & tools cabinets',
-        LONGDESC: "I am way to short to reach these cabinets, but that's okay, there's plenty of other useful stuff in the garage.",
-        DESCWORDS: ['tools', 'cabinets', 'junk cabinets', 'tools cabinets', 'junk and tools cabinets', 'jtc', 'tc', 'jc', 'jatc'],
-        TAKEABLE: False},
-- name: Kitchen Counter
-        SHORTDESC: 'the kitchen counter',
-        LONGDESC: "The kitchen counter is granite.  There's a bunch of stuff on it.",
-        DESCWORDS: ['count', 'counter', 'kitchen counter', 'kc'],
-        HAS: ['Coffee Filters'],
-        TAKEABLE: False},
-- name: Kitchen Table
-        SHORTDESC: 'the kitchen table',
-        LONGDESC: "The kitchen table is wooden.  It's big enough for all four of us.",
-        DESCWORDS: ['kitchen table', 'table', 'tab', 'kt'],
-        HAS: ['Rotten Watermelon'],
-        TAKEABLE: False},
-- name: Lawnmower Manual
-        GROUNDDESC: 'There\'s a technical and exhaustively detailed manual on our lawnmower here.',
-        SHORTDESC: 'lawnmower manual',
-        LONGDESC: "The lawnmower manual is a little paperback booklet with diagrams and instructions.  It would probably be great fun to study it.",
-        ALTGD: ["Dibs!", "Even though I'm already a lawnmower master, I probably shouldn\'t just leave it here.", "Well, I guess this is where I found it.", "It\'s home now. Hooray!"], # These follow GROUNDDESC. [0] is before studying, [1] is after if not in bathroom or file folders, [2] is in bathroom, and [3] is in file folders
-        ALTLD: 'I\'m glad I found this thing.  Without it, I never would have learned how to take apart the lawnmower.',
-        DESCWORDS: ['manual', 'lawnmower manual', 'mower manual', 'mower man', 'mow man' 'lml', 'lmml']},
-- name: Lawnmower Motor
-        SHORTDESC: 'the lawnmower motor',
-        LONGDESC: "This motor is powerful, and can be used to take a simple machine and make it more powerful.  It will only be useful on a machine that uses electric power.",
-        DESCWORDS: ['lawnmower motor', 'motor', 'lmmr', 'lmmtr']},
-- name: Linoleum Floor
-        SHORTDESC: 'the linoleum floor',
-        LONGDESC: "The floor is linoleum.  It's great for sliding on, but not useable in a trap.",
-        DESCWORDS: ['linoleum', 'floor', 'lino', 'flr', 'lf', 'lflr'],
-        TAKEABLE: False},
-- name: Lots of Park Trees
-        SHORTDESC: "lots of trees",
-        LONGDESC: "The trees in the park are all mostly really tall.  There are lots of kinds, and I can recognize fir trees, because of the needles, and oak trees because of the acorns.  The rest I don't know the names of.",
-        DESCWORDS: ['lots', 'trees', 'lots of trees'],
-        TAKEABLE: False},
-- name: Lots of Our Trees
-        SHORTDESC: 'lots of trees',
-        LONGDESC: "The trees in our yard give nice shade and are fun for climbing.",
-        DESCWORDS: ['lots', 'trees', 'lots of trees'],
-        TAKEABLE: False},
-- name: Metal Lunchbox
-        LONGDESC: "The metal lunchbox once had a red top, but it's faded and rusty and all that.  Now it blends in with the dirt and leaves pretty well.",
-        DESCWORDS: ['metal', 'lunch', 'box', 'ml', 'mlb', 'lunchbox'],
-        TAKEABLE: False,
-        HAS: ['Fishing Line'],
-        OPEN: False},
-- name: Mom & Dad's Bed
-        SHORTDESC: 'Mom & Dad's Bed',
-        LONGDESC: "Mom & Dad have this huge bed in their room.  It's really too big, I think.",
-        DESCWORDS: ['bed', 'mom\'s bed', 'dad\'s bed', 'mom & dad\'s bed', 'mdb'],
-        TAKEABLE: False},
-    'Monkey Bars': {
-        SHORTDESC: 'the monkey bars',
-        LONGDESC: "The monkey bars are fun to climb up on top of.  We're not allowed to though, I guess because you're supposed to swing from them only, so you can only climb up there after school is out.",
-        DESCWORDS: ['monkey', 'bars', 'monk', 'mb'],
-        TAKEABLE: False},
-    'Motor-Enhanced, Automatic, Solar-Powered Four-Foot Hole Digger': { # INCOMPLETE #
-        GROUNDDESC: 'The motor-enhanced, automatic, solar-powered four-foot hole digger is here. Almost as though it\'s... waiting for something.',
-        SHORTDESC: 'the motor-enhanced, automatic, solar-powered four-foot hole digger',
-        LONGDESC: "This motor-enhanced machine will dig a hole big enough for a bully to fall right into!",
-        DESCWORDS: ['motor', 'enhanced', 'solar', 'four', 'foot', 'four-foot', 'hole', 'digger', 'hole digger'],
-        PARTS: ['Lawnmower Motor', 'Automatic Solar-Powered 6-Inch Hole-Digger'],
-        ASSEMBLEMSG: '', # AssembleMSG only for traps
-        SETUPMSG: ''}, # Only for untakeables
-    'My Favorite Tree': {
-        SHORTDESC: 'my favorite tree',
-        LONGDESC: "That's my favorite tree.  I guess just because it's the one with the best view.  It's where we used to have our tire swing.  I go up there to study or read or just look out at the neighborhood sometimes.",
-        DESCWORDS: ['my tree', 'my favorite', 'favorite', 'fav', 'my favorite tree', 'tree'],
-        TAKEABLE: False},
-    'My Secret Stash': {
-        SHORTDESC: 'my secret stash',
-        LONGDESC: "My secret stash isn't even visible from here.  To get there, I have to go west to the fir tree.  Once I go around the tree, there's a little hidden room in the branches.",
-        DESCWORDS: ['secret', 'stash', 'my stash', 'my secret', 'sec', 'my secret stash', 'ms', 'mss'],
-        TAKEABLE: False},
-    'Oak Trees': {
-        SHORTDESC: 'oak trees',
-        LONGDESC: "These plants make the view from the window very nice.",
-        DESCWORDS: ['oak', 'trees', 'ot', 'tr'],
-        TAKEABLE: False},
-    'Old Dusty Filing Cabinet': {
-        SHORTDESC: 'the old dusty filing cabinet',
-        LONGDESC: "Dad's old filing cabinet is covered in dust.  It's grey, when you push on it, the metal bends and makes cool noises, and it's beginning to rust at the bottom.",
-        DESCWORDS: ['old', 'dusty', 'filing', 'cabinet', 'cab', 'old dusty', 'filing cabinet', 'od', 'fc', 'odfc', 'dfc', 'dusty filing cabinet'],
-        OPEN: False,
-        TAKEABLE: False},
-    'Old File Folders': {
-        GROUNDDESC: 'Some musty old file folders are lying here.',
-        SHORTDESC: 'old file folders',
-        LONGDESC: "All that remains here is old tabbed separators from the files.  I can read some of Dad's handwriting on the tabs.",
-        DESCWORDS: ['old', 'folders', 'old file', 'file folders', 'ff']},
-    'Old Rope': {
-        GROUNDDESC: 'There\'s some old rope lying here.',
-        SHORTDESC: 'old rope',
-        LONGDESC: "This rope is the last remaining piece of an old tire swing we used to have.  Sis used to spend a lot of time swinging on it or pushing her Rare Bears toys on it.  I spent one summer trying to get it to swing back and forth in perpetual motion.  That didn't work so well, but it could probably be used as part of a trap.  I'll have to get it down first, though.",
-        ALTLD: "Rope is always useful!  Maybe since it's a swing rope, I can tie it to something and let it swing down at those bullies.",
-        DESCWORDS: ['old', 'rope', 'old rope']},
-    'Park Benches': {
-        SHORTDESC: 'the park benches',
-        LONGDESC: "The benches in the park are wooden, but like coated in some kind of plastic paint so they don't rot.  People have carved all kinds of things in them.",
-        DESCWORDS: ['park', 'bench', 'benches', 'pb'],
-        TAKEABLE: False},
-    'Permanent Marker': {
-        GROUNDDESC: 'A permanent marker is here.',
-        SHORTDESC: 'a permanent marker',
-        LONGDESC: "A permanent marker.  I use it to label my designs or take notes.",
-        DESCWORDS: ['perm', 'mark', 'permanent marker', 'marker', 'pm']},
-    'Plastic Bucket': {
-        GROUNDDESC: 'A plastic bucket sits here.',
-        SHORTDESC: 'plastic bucket',
-        LONGDESC: "This bucket is what Dad uses to mop.  He hates mopping so he probably won't miss it if I borrow it for a day.",
-        DESCWORDS: ['plastic', 'bucket', 'plastic bucket', 'buck', 'pb']},
-    'Plastic Crawl Tube': {
-        SHORTDESC: 'plastic crawl tube',
-        LONGDESC: "A great place to read.  It has little portholes in the sides and you can hold your book in the light of those.",
-        DESCWORDS: ['plastic', 'crawl', 'tube', 'pct', 'ct'],
-        TAKEABLE: False},
-    'Plastic Enclosure': {
-        SHORTDESC: 'plastic enclosure',
-        LONGDESC: "The plastic enclosure is a heat-sealed bag I wrapped around the old lamp to make sure it wouldn't get wet.  Now that the lamp's bulb is burnt out, I don't want to dismantle the thing to replace the bulb!",
-        DESCWORDS: ['bag', 'heat-sealed', 'heat-sealed bag', 'hsb' 'heat', 'enclosure', 'enc', 'plastic', 'enclosure', 'pe'],
-        TAKEABLE: False},
-    'Playground Equipment': {
-        SHORTDESC: 'playground equipment',
-        LONGDESC: "The playground equipment here is pretty good.  There's plenty of swings and stuff to climb on, and the see-saw is nice to have.  There aren't enough slides, but you can't win 'em all I guess.",
-        DESCWORDS: ['playground equipment', 'play equip', 'equip', 'equipment', 'pge'],
-        TAKEABLE: False}, # Only for untakeables
-    'Random Flowers': {
-        SHORTDESC: 'random flowers',
-        LONGDESC: "There are a bunch of random flowers in the garden.  We used my automatic six-inch solar powered hole-digger to plant them.",
-        DESCWORDS: ['random', 'flowers', 'rf', 'flwrs', 'rando'],
-        TAKEABLE: False},
-    'Rare Bear Stuff': {
-        SHORTDESC: 'rare bear stuff',
-        LONGDESC: "My sister's whole room is covered in Rare Bear stuff.",
-        ALTLD: "My sister's whole room is covered in Rare Bear stuff.  She's even got Rare Bear stuffed animals dressed up in Rare Bear Underwear, just like her diary said!",
-        DESCWORDS: ['rare', 'bear', 'stuff', 'rare bear stuff', 'rare bear', 'bear stuff', 'bs', 'rbs'],
-        TAKEABLE: False}
+# Objects in the world
+- :name: Balloon
+  :ground_description: A deflated balloon rests here, looking sad and unloved.,
+  :short_description: the balloon
+  :long_description: I think this is actually a water balloon!  Anyway, I could fill it with something from the fridge I'm sure.
+- :name: Spoiled Milk
+  :ground_description: There's some spoiled milk here.
+  :short_description: spoiled milk
+  :long_description: The spoiled milk would make a great trap!  It'll go best in one of those old water balloons we used to play with.
+- :name: Automatic Solar-Powered 6-Inch Hole-Digger
+  :ground_description: The automatic, solar-powered 6-inch hole-digger has been left here.
+  :short_description: automatic, solar-powered 6-inch hole-digger
+  :long_description: The automatic, solar-powered 6-inch hole-digger is one of my best inventions.  Unfortunately, it's not going to be useful as a trap by itself.  The solar cell energy just isn't powerful enough.
+- :name: Bathroom Counter
+  :short_description: bathroom counter
+  :long_description: There isn't anything in the sinks, and the counter is pretty clean.  They keep toothbrushing stuff on the counter.
+  :has:
+    - Toothbrush
+- :name: Black Pepper Bombs
+  :ground_description: There are some black pepper bombs here, ready to dispense sneezy justice.
+  :short_description: black pepper bombs
+  :long_description: These pepper bombs are sure to cause irritation and sneezing on impact!  I will need a trigger and a launcher to set these up.
+  :parts: [Ground Black Pepper, Coffee Filters]
+  :assemble_msg: I dump some ground pepper into a few coffee filters, to make pepper bombs.  These are sure to have the bullies sneezing for hours! # assemble_msg only for traps
+  :setup: False,
+  :setup_msg: I put the black pepper bombs at the top of the slide, where they can be ramped off the bottom at a bully.
+  :setup_description: The black pepper bombs are sitting at the top of the slide, hidden from view.
+  :setup_gd: 'The black pepper bombs are resting at the top of the slide.'
+- :name: Branches and Needles
+  :short_description: branches and needles
+  :long_description: The branches and needles that I use to cover the secret stash are here.  They are old and brown, and conceal it pretty well.
+  :takeable: False
+- :name: Bucket of Mud
+  :ground_description: There's a bucket full of gushy grimy mud on the ground
+  :short_description: a bucket of mud
+  :long_description: The bucket of mud trap can be propped up somewhere and setup to spill on someone when a trigger is activated.
+  :parts:
+    - Bucket
+    - Mud
+  :assemble_msg: I take a nice big scoop of mud in the bucket.  This stuff is yucky.  I can't wait to dump it on someone!
+  :setup: False,
+  :setup_msg: I prop the mud bucket up on the top of the monkey bars where it can dump its contents on an unsuspecting bully below.
+  :setup_description: The bucket of mud was hard to hoist up onto the monkey bars, but it will cover anyone below it when it spills.
+  :setup_gd: 'The bucket of mud is sitting up on top of the monkey bars.'
+- :name: Carvings of People Dancing
+  :short_description: carvings
+  :long_description: The designs in the stone of the school are my favorite part.  The people dancing look like they're having a lot of fun, and the gears make me think of learning about inventions and making things!
+  :takeable: False # Only for untakeables
+- :name: Cider Vinegar
+  :ground_description: There's some cider vinegar here.
+  :short_description: cider vinegar
+  :long_description: Ew this stuff smells like feet.
+- :name: Cider Vinegar Gun Trap
+  :ground_description: There's some cider vinegar here.
+  :short_description: cider vinegar gun trap
+  :long_description: I'll set this up so it'll shoot a bully in the pants!  The vinegar smells awful, and it's gonna be pretty embarrassing for whoever it hits!
+  :parts:
+    - Cider Vinegar
+    - Water Gun
+  :assemble_msg: I pour the whole bottle of smelly cider vinegar into the water gun.  I can't wait to spray somebody with this smelly stuff!  Now I have a vinegar gun trap!
+  :setup: False,
+  :setup_msg: I wedge the vinegar gun into the tire swing.  It's pumped and ready to fire.
+  :setup_description: The cider vinegar gun is wedged firmly into the tire swing, ready to shoot its stinky ammunition all over a bully.
+  :setup_gd: I can see the cider vinegar gun's nozzle poking out of the tire swing.
+- :name: Cleaning Supplies Cabinet
+  :short_description: cleaning supplies cabinet
+  :long_description: The cleaning supplies cabinet is an old wooden cabinet.  Dad does most of the cleaning, but sometimes I go in here for some ingredients in my chemistry experiments.
+  :takeable: False
+  :has:
+    - Bucket
+  :open: False
+- :name: Dad's Tackle Box
+  :short_description: Dad's tackle box
+  :long_description: Dad's tackle box is full of fishing supplies, I bet I could use something in there.
+  :takeable: False,
+  :has:
+    - Small Metal Key
+  :open: False
+- :name: Dart Gun
+  :ground_description: There's an awesome-looking dart gun here. My awesome-looking dart gun.
+  :short_description: a dart gun
+  :alt_sd: a loaded dart gun
+  :long_description: This dart gun is really cool.  It uses the force of air created by a plunger and springs to propel ... well, it's no good without a dart, first of all.
+  :alt_ld: I put the dart in the gun.  Pretty simple really.  I just know it's a good idea.
+  :loaded: False,
+  :alt_dw:
+    - loaded, ldg
+- :name: Dining Room Table
+  :short_description: Dining Room table
+  :long_description: The Dining Room table is a big wooden table.  I remember when I was shorter than it, since it's one of the tallest pieces of furniture in the house.
+  :takeable: False
+- :name: Fishing Line   # GROUNDdescription and long_description need to change when bullies destroy the fortress
+  :ground_description: Why is that fishing line just sitting there? It's time to build my drawbridge!
+  :short_description: fishing line
+  :long_description: I remember I got this fishing line from the creek.  I untangled it and stuck it in my secret stash.  It's not as cool as the NO2 cartridges I used to have in the stash, but I know it's gonna work on the drawbridge!
+- :name: Front Spigot
+  :short_description: the spigot
+  :long_description: It's a little metal spigot.  Sometimes it drips a bit, and if it goes too long, the ground behind the garden gets all muddy, but the water is clean.  I use it to water the flowers, with the hose.
+  :open: False,
+  :takeable: False
+- :name: Ground Black Pepper
+  :ground_description: Some black pepper is on the ground.
+  :short_description: ground black pepper
+  :long_description: Ground black pepper is better than whole peppercorns, but it can make you sneeze if you're not careful.
+- :name: Guadachangan Flag
+  :short_description: Guadachangan flag
+  :long_description: I remember from class that the green stripes are for Juan Carlos and Felix, the two friends who founded Guadachango, but the guitar & rowboat were not on the study guide, so I forgot.
+  :takeable: False
+- :name: Hankin Elementary School
+  :short_description: Hankin Elementary School
+  :long_description: I spent the whole day in school . . . now I'm ready to get to the park. # needs to change after Bullies destroy fortress
+  :takeable: False
+- :name: Instant Poop Trap
+  :ground_description: The instant poop trap is lying here, looking very suspicious.
+  :short_description: the instant poop trap
+  :long_description: I'll set this up with a trigger and tomorrow it'll shoot a bully in the butt!  I can hardly wait!
+  :parts:
+    - Mud
+    - Water Gun
+  :assemble_msg: I scoop up some mud and pour it into the water gun.  It's pretty gross.  In fact, the mud kinda looks like poop.  I could shoot somebody in the butt with this!  Now I've got an instant poop trap!
+  :setup_msg: I pump the water gun so it's primed and ready to fire.  I set the trap up by wedging it into the tic-tac-toe board, where it can fire a blast of poop-like liquid at my enemy's butt.
+  :setup_description: The mud-filled water gun is stuck firmly in the tic-tac-toe board.  It's aimed at a downward angle so it can hit you in the butt.
+  :setup_gd: ' I can see the handle of the water gun poking out of the tic-tac-toe board.'
+- :name: Jungle Gym # at the moment, don't know what to do with post-trap-setup :addition: 'This particular jungle gym has a pair of Rare Bear Underwear dangling ominously from it.'
+  :short_description: the jungle gym
+  :long_description: The jungle gym is a metal dome. You can climb around on it and swing from it and stuff.
+  :takeable: False
+- :name: Junk & Tools Cabinets
+  :short_description: junk & tools cabinets
+  :long_description: I am way to short to reach these cabinets, but that's okay, there's plenty of other useful stuff in the garage.
+  :takeable: False
+- :name: Kitchen Counter
+  :short_description: the kitchen counter
+  :long_description: The kitchen counter is granite.  There's a bunch of stuff on it.
+  :has:
+    - Coffee Filters
+  :takeable: False
+- :name: Kitchen Table
+  :short_description: the kitchen table
+  :long_description: The kitchen table is wooden.  It's big enough for all four of us.
+  :has:
+    - Rotten Watermelon
+  :takeable: False
+- :name: Lawnmower Manual
+  :ground_description: There's a technical and exhaustively detailed manual on our lawnmower here.
+  :short_description: lawnmower manual
+  :long_description: The lawnmower manual is a little paperback booklet with diagrams and instructions.  It would probably be great fun to study it.
+  :alt_gd:
+    - Dibs!
+    - Even though I'm already a lawnmower master, I probably shouldn't just leave it here.
+    - Well, I guess this is where I found it.
+    - It's home now. Hooray! # These follow GROUNDdescription. [0] is before studying, [1] is after if not in bathroom or file folders, [2] is in bathroom, and [3] is in file folders
+  :alt_ld: I'm glad I found this thing.  Without it, I never would have learned how to take apart the lawnmower.
+- :name: Lawnmower Motor
+  :short_description: the lawnmower motor
+  :long_description: This motor is powerful, and can be used to take a simple machine and make it more powerful.  It will only be useful on a machine that uses electric power.
+- :name: Linoleum Floor
+  :short_description: the linoleum floor
+  :long_description: The floor is linoleum.  It's great for sliding on, but not useable in a trap.
+  :takeable: False
+- :name: Lots of Park Trees
+  :short_description: lots of trees
+  :long_description: The trees in the park are all mostly really tall.  There are lots of kinds, and I can recognize fir trees, because of the needles, and oak trees because of the acorns.  The rest I don't know the names of.
+  :takeable: False
+- :name: Lots of Our Trees
+  :short_description: lots of trees
+  :long_description: The trees in our yard give nice shade and are fun for climbing.
+  :takeable: False
+- :name: Metal Lunchbox
+  :long_description: The metal lunchbox once had a red top, but it's faded and rusty and all that.  Now it blends in with the dirt and leaves pretty well.
+  :takeable: False,
+  :has: Fishing Line
+  :open: False
+- :name: Mom & Dad's Bed
+  :short_description: Mom & Dad's Bed
+  :long_description: Mom & Dad have this huge bed in their room.  It's really too big, I think.
+  :takeable: False
+- :name: Monkey Bars
+  :short_description: the monkey bars
+  :long_description: The monkey bars are fun to climb up on top of.  We're not allowed to though, I guess because you're supposed to swing from them only, so you can only climb up there after school is out.
+  :takeable: False
+- :name: Motor-Enhanced, Automatic, Solar-Powered Four-Foot Hole Digger  # INCOMPLETE #
+  :ground_description: The motor-enhanced, automatic, solar-powered four-foot hole digger is here. Almost as though it's... waiting for something.
+  :short_description: the motor-enhanced, automatic, solar-powered four-foot hole digger
+  :long_description: This motor-enhanced machine will dig a hole big enough for a bully to fall right into!
+  :parts:
+    - Lawnmower Motor
+    - Automatic Solar-Powered 6-Inch Hole-Digger
+  :assemble_msg:  # assemble_msg only for traps
+  :setup_msg:  # Only for untakeables
+- :name: My Favorite Tree
+  :short_description: my favorite tree
+  :long_description: That's my favorite tree.  I guess just because it's the one with the best view.  It's where we used to have our tire swing.  I go up there to study or read or just look out at the neighborhood sometimes.
+  :takeable: False
+- :name: My Secret Stash
+  :short_description: my secret stash
+  :long_description: My secret stash isn't even visible from here.  To get there, I have to go west to the fir tree.  Once I go around the tree, there's a little hidden room in the branches.
+  :takeable: False
+- :name: Oak Trees
+  :short_description: oak trees
+  :long_description: These plants make the view from the window very nice.
+  :takeable: False
+- :name: Old Dusty Filing Cabinet
+  :short_description: the old dusty filing cabinet
+  :long_description: Dad's old filing cabinet is covered in dust.  It's grey, when you push on it, the metal bends and makes cool noises, and it's beginning to rust at the bottom.
+  :open: False,
+  :takeable: False
+- :name: Old File Folders
+  :ground_description: Some musty old file folders are lying here.
+  :short_description: old file folders
+  :long_description: All that remains here is old tabbed separators from the files.  I can read some of Dad's handwriting on the tabs.
+- :name: Old Rope
+  :ground_description: There's some old rope lying here.
+  :short_description: old rope
+  :long_description: This rope is the last remaining piece of an old tire swing we used to have.  Sis used to spend a lot of time swinging on it or pushing her Rare Bears toys on it.  I spent one summer trying to get it to swing back and forth in perpetual motion.  That didn't work so well, but it could probably be used as part of a trap.  I'll have to get it down first, though.
+  :alt_ld: Rope is always useful!  Maybe since it's a swing rope, I can tie it to something and let it swing down at those bullies.
+- :name: Park Benches
+  :short_description: the park benches
+  :long_description: The benches in the park are wooden, but like coated in some kind of plastic paint so they don't rot.  People have carved all kinds of things in them.
+  :takeable: False
+- :name: Permanent Marker
+  :ground_description: A permanent marker is here.
+  :short_description: a permanent marker
+  :long_description: A permanent marker.  I use it to label my designs or take notes.
+- :name: Plastic Bucket
+  :ground_description: A plastic bucket sits here.
+  :short_description: plastic bucket
+  :long_description: This bucket is what Dad uses to mop.  He hates mopping so he probably won't miss it if I borrow it for a day.
+- :name: Plastic Crawl Tube
+  :short_description: plastic crawl tube
+  :long_description: A great place to read.  It has little portholes in the sides and you can hold your book in the light of those.
+  :takeable: False
+- :name: Plastic Enclosure
+  :short_description: plastic enclosure
+  :long_description: The plastic enclosure is a heat-sealed bag I wrapped around the old lamp to make sure it wouldn't get wet.  Now that the lamp's bulb is burnt out, I don't want to dismantle the thing to replace the bulb!
+  :takeable: False
+- :name: Playground Equipment
+  :short_description: playground equipment
+  :long_description: The playground equipment here is pretty good.  There's plenty of swings and stuff to climb on, and the see-saw is nice to have.  There aren't enough slides, but you can't win 'em all I guess.
+  :takeable: False # Only for untakeables
+- :name: Random Flowers
+  :short_description: random flowers
+  :long_description: There are a bunch of random flowers in the garden.  We used my automatic six-inch solar powered hole-digger to plant them.
+  :takeable: False
+- :name: Rare Bear Stuff
+  :short_description: rare bear stuff
+  :long_description: My sister's whole room is covered in Rare Bear stuff.
+  :alt_ld: My sister's whole room is covered in Rare Bear stuff.  She's even got Rare Bear stuffed animals dressed up in Rare Bear Underwear, just like her diary said!
+  :takeable: False
