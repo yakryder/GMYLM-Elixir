@@ -10,6 +10,7 @@ defmodule Gmylm.PlayerTest do
   doctest Player
 
   setup_all do
+    world  = Location.initialize_locations
     spoiled_milk_bomb = %Object{ name: "Spoiled Milk Bomb" }
     dart_gun          = %Object{ name: "Dart Gun" }
     poop_trap         = %Object{ name: "Poop Trap" }
@@ -18,8 +19,8 @@ defmodule Gmylm.PlayerTest do
     west_room  = %Location{ west: %Location{ name: "Move west" } }
     south_room = %Location{ south: %Location{ name: "Move south" }, on_ground: [ spoiled_milk_bomb ]  }
     player = %Player{ location: south_room }
-    world  = [ %Location{ north: %Location { name: "filler" } } ]
-    { :ok, north_room: north_room, east_room: east_room, west_room: west_room, south_room: south_room,
+    player_in_hallway = %Player{location: Enum.find(world, nil, fn(location) -> location.down end)}
+    { :ok, north_room: north_room, east_room: east_room, west_room: west_room, south_room: south_room, player_in_hallway: player_in_hallway,
      player: player, spoiled_milk_bomb: spoiled_milk_bomb, dart_gun: dart_gun, poop_trap: poop_trap, world: world }
   end
 
@@ -34,32 +35,49 @@ defmodule Gmylm.PlayerTest do
   end
 
   describe "move/3" do
-    test "player can move north when a location exists to the north", %{ north_room: north_room, world: world }  do
-      player = %Player{ location: north_room }
-      { player_move_status, player_moved_north, _world } = Player.move(:north, player, world)
+    test "player can move north when a location exists to the north", %{ player_in_hallway: player_in_hallway, world: world } do
+      { player_move_status, player_moved_north, _world } = Player.move(:north, player_in_hallway, world)
       assert player_move_status == :ok
-      assert player_moved_north.location == %Location{ name: "Move north" }
+      assert player_moved_north.location.name == "Laundry Room"
     end
 
-    test "player can move east when a location exists to the east", %{ east_room: east_room, poop_trap: poop_trap, world: world }  do
-      player  = %Player{ location: east_room }
-      { player_move_status, player_moved_east, _world } = Player.move(:east, player, world)
+    test "player can move east when a location exists to the east", %{ player_in_hallway: player_in_hallway, world: world } do
+      { player_move_status, player_moved_east, _world } = Player.move(:east, player_in_hallway, world)
       assert player_move_status == :ok
-      assert player_moved_east.location == %Location{ name: "Move east", on_ground: [ poop_trap ] }
+      assert player_moved_east.location.name == "Downstairs Bathroom"
     end
 
-    test "player can move south when a location exists to the south", %{ south_room: south_room, world: world }  do
-      player   = %Player{ location: south_room }
-      { player_move_status, player_moved_south, _world } = Player.move(:south, player, world)
+    test "player can move south when a location exists to the south", %{ player_in_hallway: player_in_hallway, world: world } do
+      { player_move_status, player_moved_south, _world } = Player.move(:south, player_in_hallway, world)
       assert player_move_status == :ok
-      assert player_moved_south.location == %Location{ name: "Move south" }
+      assert player_moved_south.location.name == "Foyer"
     end
 
-    test "player can move west when a location exists to the west", %{ west_room: west_room, world: world }  do
-      player  = %Player{ location: west_room }
-      { player_move_status, player_moved_west, _world } = Player.move(:west, player, world)
+    test "player can move west when a location exists to the west", %{ player_in_hallway: player_in_hallway, world: world }  do
+      { player_move_status, player_moved_west, _world } = Player.move(:west, player_in_hallway, world)
       assert player_move_status == :ok
-      assert player_moved_west.location == %Location{ name: "Move west" }
+      assert player_moved_west.location.name == "Kitchen"
+    end
+
+    test "player can move up when a location exists up", %{ player_in_hallway: player_in_hallway, world: world }  do
+      { player_move_status, player_moved_up, _world } = Player.move(:up, player_in_hallway, world)
+      assert player_move_status == :ok
+      assert player_moved_up.location.name == "Upstairs Hallway"
+    end
+
+    test "player can move down when a location exists down", %{ player_in_hallway: player_in_hallway, world: world }  do
+      { player_move_status, player_moved_down, _world } = Player.move(:down, player_in_hallway, world)
+      assert player_move_status == :ok
+      assert player_moved_down.location.name == "Basement"
+    end
+
+    test "player can move multiple times without breaking move", %{ player_in_hallway: player_in_hallway, world: world }  do
+      { player_move_status, player_moved_down, _world } = Player.move(:down, player_in_hallway, world)
+      assert player_move_status == :ok
+      assert player_moved_down.location.name == "Basement"
+      { player_move_back_status, player_moved_back, _world } = Player.move(:up, player_moved_down, world)
+      assert player_move_back_status == :ok
+      assert player_moved_back.location.name == "Hallway"
     end
   end
 

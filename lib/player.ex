@@ -24,7 +24,7 @@ defmodule Gmylm.Player do
   @spec move(atom, %Player{}, [%Location{}]) :: { atom, %Player{}, [%Location{}] }
 
   def move(direction, %Player{} = player, [%Location{}|_] = world) do
-    { :ok, %Player{player | location: Map.get(player.location, direction)}, world }
+    { :ok, %Player{player | location: Enum.find(world, nil, fn(location) -> location.name == Map.get(player.location, direction) end)}, world }
   end
 
   @spec pick_up(%Player{}, %Object{}) :: {atom, %Player{}, %Object{}}
