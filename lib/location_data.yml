@@ -6,7 +6,7 @@
   :up: Up in my favorite tree
   :on_ground: []
 - :name: Basement
-  :description: The basement's not scary, okay?  Some people say it is but I say its only scary if theres a storm and the lights are out and something is not put away where you expect it to be and it looks like a person in the shadows.  Otherwise the basement is neat.  Its full of tools and stuff.\n\nThe only way out is back up the stairs.
+  :description: The basement's not scary, okay?  Some people say it is but I say its only scary if theres a storm and the lights are out and something is not put away where you expect it to be and it looks like a person in the shadows.  Otherwise the basement is neat.  It's full of tools and stuff.\n\nThe only way out is back up the stairs.
   :up: Hallway
   :on_ground: []
 - :name: Dining Room
@@ -19,19 +19,19 @@
   :west: Hallway
   :on_ground: []
 - :name: Foyer
-  :description: The front entryway to my house is kept clean.  Mom & Dad dont let me and %nameOfSister% play in here, and we get yelled at when we put our backpacks down in here.  Sis backpack is on the floor.\n\nThe front yard is just outside to the south.  The hallway is to the north.  The dining room is just west of here, and across to the east is the living room.
+  :description: The front entryway to my house is kept clean.  Mom & Dad dont let me and %nameOfSister% play in here, and we get yelled at when we put our backpacks down in here.  Sis' backpack is on the floor.\n\nThe front yard is just outside to the south.  The hallway is to the north.  The dining room is just west of here, and across to the east is the living room.
   :north: Hallway
   :east: Living Room
   :south: Front Yard
   :west: Dining Room
   :on_ground: []
 - :name: Front Yard
-  :description: Its the front yard.  Its covered in grass with a little pathway around the garden leading up to the front door.  Just seeing my yard makes me feel safe... it means I got all the way home from school in one piece!\n\nThe park is just south of here, and the foyer of my house is to the north.
+  :description: It's the front yard.  It's covered in grass with a little pathway around the garden leading up to the front door.  Just seeing my yard makes me feel safe... it means I got all the way home from school in one piece!\n\nThe park is just south of here, and the foyer of my house is to the north.
   :north: Foyer
   :south: The Park
   :on_ground: []
 - :name: Garage
-  :description: The garage is pretty cool.  A few years ago, Mom & Dad put all the junk and tools up in cabinets on the walls so the cars could fit in the garage.  Then they got more junk and a lawnmower.  So now just one car fits.\n\nIm too short to open the front garage doors, but the door to the west leads back inside to the laundry room.
+  :description: The garage is pretty cool.  A few years ago, Mom & Dad put all the junk and tools up in cabinets on the walls so the cars could fit in the garage.  Then they got more junk and a lawnmower.  So now just one car fits.\n\nI'm too short to open the front garage doors, but the door to the west leads back inside to the laundry room.
   :west: Laundry Room
   :on_ground: []
 - :name: Hallway
@@ -57,7 +57,7 @@
   :west: Upstairs Hallway
   :on_ground: []
 - :name: Kitchen
-  :description: The kitchen is cool.  Its full of good food.  Sometimes Dad forgets to clean out the fridge for a while, or take out the trash, and then it gets gross.  I like the floor because you can slide on it in your socks!  Its Linoleum.  Theres also the kitchen counter in here, which is pretty tall -- only a little below my head.\n\nThe eastern exit leads to the hall, with stairs, and the south goes into the dining room to eat.
+  :description: The kitchen is cool.  It's full of good food.  Sometimes Dad forgets to clean out the fridge for a while, or take out the trash, and then it gets gross.  I like the floor because you can slide on it in your socks!  It's Linoleum.  Theres also the kitchen counter in here, which is pretty tall -- only a little below my head.\n\nThe eastern exit leads to the hall, with stairs, and the south goes into the dining room to eat.
   :east: Hallway
   :south: Dining Room
   :on_ground: []
@@ -68,24 +68,24 @@
   :south: Hallway
   :on_ground: []
 - :name: Living Room
-  :description: I dont spend much time in the living room.  I just come in here to watch movies.  Dad likes to read in here and he folds laundry in front of the TV sometimes.  Mom uses the stereo to listen to music in here after work some nights.\n\nThe only way out of here is back west to the foyer.
+  :description: I don't spend much time in the living room.  I just come in here to watch movies.  Dad likes to read in here and he folds laundry in front of the TV sometimes.  Mom uses the stereo to listen to music in here after work some nights.\n\nThe only way out of here is back west to the foyer.
   :west: Foyer
   :on_ground: []
-- :name: Mom & Dads Bathroom
-  :description: I basically never go in here.  Its a big bathroom with two sinks in the counter and a huge mirror.  The bath is really big too.  Besides all that its just the toilet.  \n\nThe only door in here leads east into their bedroom.
-  :east: Mom & Dads Room
+- :name: Mom & Dad's Bathroom
+  :description: I basically never go in here.  It's a big bathroom with two sinks in the counter and a huge mirror.  The bath is really big too.  Besides all that it's just the toilet.  \n\nThe only door in here leads east into their bedroom.
+  :east: Mom & Dad's Room
   :on_ground: []
-- :name: Mom & Dads Room
+- :name: Mom & Dad's Room
   :description: Im definitely not supposed to be in here, so I should probably leave soon.  Mom & Dads bed is in here, and its really big.  Against the other wall is a wooden wardrobe.  \n\nI can get to their bathroom to the west from in here, or back to the hall to the east.
   :east: Upstairs Hallway
-  :west: Mom & Dads Bathroom
+  :west: Mom & Dad's Bathroom
   :on_ground: []
 - :name: My Room
   :description: My room is pretty cool.  You can see the backyard from my window, and I have a big corner desk.  \n\nThe only exit here is south to the hallway.
   :south: Upstairs Hallway
   :on_ground: []
 - :name: My Secret Stash
-  :description: My secret stash is an old metal lunchbox I dug up.  I took it to this little room I can get to under some fir trees.  When you come around from the back of this one tree by the rocks, its like a little cave with walls of fir needles, and you disappear under here!  So this is where I buried the lunchbox.  Its like a little sunken treasure chest with the lid sticking out, hidden from view with some branches and pine needles that I lay over it.\n\nThe only way out of the secret room is back east to the park.
+  :description: My secret stash is an old metal lunchbox I dug up.  I took it to this little room I can get to under some fir trees.  When you come around from the back of this one tree by the rocks, its like a little cave with walls of fir needles, and you disappear under here!  So this is where I buried the lunchbox.  It's like a little sunken treasure chest with the lid sticking out, hidden from view with some branches and pine needles that I lay over it.\n\nThe only way out of the secret room is back east to the park.
   :east: The Park
   :on_ground: [Branches and Needles]
 - :name: My Sister's Bedroom
@@ -101,12 +101,12 @@
 - :name: Upstairs Hallway
   :description: The upstairs hallway is pretty much like the downstairs hallway except that it has carpet like all the rooms upstairs.\n\nThe southern door goes to Sis room, the eastern one is the bathroom, the northern door is for my room, and the western door leads to Mom & Dads room.
   :north: My Room
-  :east: Kids Bathroom
-  :south: My Sisters Bedroom
-  :west: Mom & Dads Room
+  :east: Kids' Bathroom
+  :south: My Sister's Bedroom
+  :west: Mom & Dad's Room
   :down: Hallway
   :on_ground: []
 - :name: Up in my favorite tree
-  :description: Up on this branch I can see the whole yard.  Its my favorite place to study.  In fact, my old reading lamp is attached to the tree here.\n\nThe only way to go from here is down.
+  :description: Up on this branch I can see the whole yard.  It's my favorite place to study.  In fact, my old reading lamp is attached to the tree here.\n\nThe only way to go from here is down.
   :down: Backyard
   :on_ground: []

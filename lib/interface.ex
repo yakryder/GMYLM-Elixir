@@ -5,14 +5,14 @@ defmodule Gmylm.Interface do
 alias Gmylm.Player
 alias Gmylm.World.Location
 
-def controls(%Player{} = player, [%Location{}|_] = world) do
-  %{
-     "north" => fn -> Player.move(:north, player, world) end,
-     "east"  => fn -> Player.move(:east, player, world)  end,
-     "south" => fn -> Player.move(:south, player, world) end,
-     "west"  => fn -> Player.move(:west, player, world)  end,
-   }
-end
+  def controls(%Player{} = player, [%Location{}|_] = world) do
+    %{
+       "north" => fn -> Player.move(:north, player, world) end,
+       "east"  => fn -> Player.move(:east, player, world)  end,
+       "south" => fn -> Player.move(:south, player, world) end,
+       "west"  => fn -> Player.move(:west, player, world)  end,
+     }
+  end
 
 
 

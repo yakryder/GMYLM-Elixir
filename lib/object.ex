@@ -17,7 +17,7 @@ defmodule Gmylm.World.Object do
     iex> Object.initialize_objects |> Enum.count
     47
 
-    iex> Object.initialize_objects |> Enum.all?(fn(element) -> element.__struct__ == Gmylm.World.Object end )
+    iex> Object.initialize_objects |> Enum.all?(fn(element) -> element.__struct__ == Gmylm.World.Object end)
     true
   """
 
