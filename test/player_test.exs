@@ -25,8 +25,13 @@ defmodule Gmylm.PlayerTest do
   end
 
   describe "%Player{}" do
-    test "player has a location that defaults to nil" do
-      assert %Player{}.location == "Hankin Elementary School"
+    test "player has a location that defaults to Hankin Elementary School" do
+      assert %Player{}.location == %Gmylm.World.Location{description: "Hankin is my school.  The school is a pretty cool building.  Made of brick and really old with designs in the stone parts.  I like the carvings of gears, and the one of the people dancing.  There are lots of kids out in front of the school right now because the bell just rang.",
+  down: nil, east: "Hankin School Playground",
+  name: "Hankin Elementary School", north: nil,
+  on_ground: ["Carvings of People Dancing",
+   "Spoiled Milk", "Balloon"], south: nil, up: nil,
+  west: "The Park"}
     end
 
     test "player has an inventory that defaults to an empty list" do
@@ -81,9 +86,27 @@ defmodule Gmylm.PlayerTest do
     end
   end
 
+  describe "look/2" do
+    test "looking shows the description of the player's current location", %{ player_in_hallway: player_in_hallway, world: world } do
+      { look_status, location_description, _player_in_hallway, _world } = Player.look(player_in_hallway, world)
+      assert look_status == :ok
+      assert location_description == "The hallway has wooden floors...not as much fun as the kitchen floors. <br><br>Theres not too much to do here, but from here I can go upstairs to the bedrooms and stuff, or down to the basement!\\n\\nTo the east is the bathroom, to the west is the kitchen, the southern exit leads back to the foyer and the north goes to the laundry room towards the backyard."
+    end
+
+    test "it returns a player", %{player_in_hallway: player_in_hallway, world: world} do
+      { _look_status, _location_description, player_in_hallway, _world } = Player.look(player_in_hallway, world)
+      assert player_in_hallway.__struct__ == Gmylm.Player
+    end
+
+    test "it returns a world", %{player_in_hallway: player_in_hallway, world: world} do
+      { _look_status, _location_description, _player_in_hallway, world } = Player.look(player_in_hallway, world)
+      assert world |> Enum.all?(fn(element) -> element.__struct__ == Gmylm.World.Location end)
+    end
+  end
+
   describe "pick_up/2" do
     test "picking up an object in player's location adds it to the inventory", %{ player: player, spoiled_milk_bomb: spoiled_milk_bomb }  do
-      { pick_up_status, player_picked_up, {_remove_object_status, _location} }  = Player.pick_up(player, spoiled_milk_bomb)
+      { pick_up_status, player_picked_up, {_remove_object_status, _location} } = Player.pick_up(player, spoiled_milk_bomb)
       assert pick_up_status == :ok
       assert player_picked_up.inventory == [ spoiled_milk_bomb ]
     end
