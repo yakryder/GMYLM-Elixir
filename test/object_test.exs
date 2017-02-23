@@ -15,7 +15,7 @@ defmodule Gmylm.World.ObjectTest do
     test "it has a name that defaults to nil" do
       assert %Object{}.name == nil
     end
-    
+
     test "it has a ground description that defaults to nil" do
       assert %Object{}.ground_description == nil
     end

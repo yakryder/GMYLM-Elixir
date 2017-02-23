@@ -14,6 +14,10 @@ alias Gmylm.World.Location
      }
   end
 
+  def render_output({_look_status, description, _player, _world}) do
+    IO.puts description
+  end
+
 
 
 end
