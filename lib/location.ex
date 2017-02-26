@@ -18,7 +18,7 @@ defmodule Gmylm.World.Location do
     iex> Location.initialize_locations |> Enum.count
     22
 
-    iex> Location.initialize_locations |> Enum.all?(fn(element) -> element.__struct__ == Gmylm.World.Location end )
+    iex> Location.initialize_locations |> Gmylm.all_elements_are?(Gmylm.World.Location)
     true
   """
 
@@ -56,4 +56,6 @@ defmodule Gmylm.World.Location do
       true -> {:error, "there is no #{object.name} here"}
     end
   end
+
+
 end

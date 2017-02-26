@@ -29,11 +29,22 @@ defmodule Gmylm do
   end
 
   def start_game do
-    { _status, player, world } = Gmylm.initialize_game
+    {_status, player, world} = Gmylm.initialize_game
     game_loop(player, world)
   end
 
   def console(%Player{} = player, [%Location{}|_] = world) do
 
+  end
+
+  @doc """
+  Returns a boolean that indicates whether every element in the list is one of
+  the indicated structs.
+  """
+
+  @spec all_elements_are?(list, any) :: boolean
+
+  def all_elements_are?([_head|_tail] = list, struct_name) do
+    Enum.all?(list, fn(element) -> element.__struct__ == struct_name end)
   end
 end

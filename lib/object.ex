@@ -11,13 +11,13 @@ defmodule Gmylm.World.Object do
 
   @doc """
   Initializes the game objects as %Object{} structs.
-  There are 47 objects, and everyone should be an %Object
+  There are 47 objects, and every one should be an %Object
 
   Examples:
     iex> Object.initialize_objects |> Enum.count
     47
 
-    iex> Object.initialize_objects |> Enum.all?(fn(element) -> element.__struct__ == Gmylm.World.Object end)
+    iex> Object.initialize_objects |> Gmylm.all_elements_are?(Gmylm.World.Object)
     true
   """
 

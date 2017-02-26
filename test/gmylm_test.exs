@@ -32,4 +32,16 @@ defmodule GmylmTest do
     # end
   end
 
+  describe "all_elements_are?/2" do
+    test "it returns true if all elements are instances of the passed struct name", %{world: world} do
+      assert Gmylm.all_elements_are?(world, Gmylm.World.Location)
+    end
+
+    test "it returns false if not all elements are instances of the passed struct name", %{world: world} do
+      broken_world = world ++ [%Player{}]
+      refute Gmylm.all_elements_are?(broken_world, Gmylm.World.Location)
+    end
+  end
+
+
 end
