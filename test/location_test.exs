@@ -17,8 +17,10 @@ defmodule Gmylm.World.LocationTest do
     location_w_objects = %Location{on_ground: [spoiled_milk_bomb, dart_gun, cayenne_pepper]}
     basement           = %Location{description: "The basement's not scary, okay?  Some people say it is but I say it's only scary if there's a storm and the lights are out and something is not put away where you expect it to be and it looks like a person in the shadows.  Otherwise the basement is neat.  It's full of tools and stuff.\n\nThe only way out is back up the stairs."}
     basement_w_balloon = %Location{basement | on_ground: [balloon]}
+    world              = Location.initialize_locations
+    hallway            = Enum.find(world, nil, fn(location) -> location.down end)
     {:ok, balloon: balloon, location_w_objects: location_w_objects, basement: basement, basement_w_balloon: basement_w_balloon,
-    spoiled_milk_bomb: spoiled_milk_bomb, dart_gun: dart_gun, cayenne_pepper: cayenne_pepper}
+    spoiled_milk_bomb: spoiled_milk_bomb, dart_gun: dart_gun, cayenne_pepper: cayenne_pepper, world: world, hallway: hallway}
   end
 
   test "it exists" do
@@ -117,6 +119,12 @@ defmodule Gmylm.World.LocationTest do
 
     test "it returns an error if the object isn't there", %{basement_w_balloon: basement_w_balloon, dart_gun: dart_gun} do
       assert Location.remove_object(dart_gun, basement_w_balloon) == {:error, "there is no Dart Gun here"}
+    end
+  end
+
+  describe "Location.available_exits/1" do
+    test "it returns the available exits of a location", %{hallway: hallway} do
+      {:ok, exits} = Location.available_exits(hallway)
     end
   end
 end

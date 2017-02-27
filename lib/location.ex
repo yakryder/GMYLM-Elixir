@@ -4,6 +4,7 @@ defmodule Gmylm.World.Location do
   """
   alias Gmylm.World.Location
   alias Gmylm.World.Object
+  alias Gmylm.Player
 
   @doc """
   Struct for Locations.
@@ -57,5 +58,12 @@ defmodule Gmylm.World.Location do
     end
   end
 
-
+  def available_exits(%Location{} = location) do
+    {:ok,
+    location        |>
+    Map.from_struct |>
+    #Enum.each(fn {k, v} -> IO.puts {k, v} end)}
+    Enum.reject(fn {k, v} -> v == nil || is_list v || v if k == 'description' || v if k == "name" end) |>
+    Enum.into(%{})}
+  end
 end

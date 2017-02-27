@@ -96,15 +96,21 @@ defmodule Gmylm.PlayerTest do
     end
   end
 
-  describe "pick_up/2" do
+  describe "pick_up/3" do
     test "picking up an object in player's location adds it to the inventory", %{player: player, poop_trap: poop_trap} do
       {pick_up_status, player_picked_up, {_remove_object_status, _location}} = Player.pick_up(player, poop_trap)
       assert pick_up_status == :ok
       assert player_picked_up.inventory == [poop_trap]
     end
 
-    test "it returns a player" do
+    test "it returns a player", %{player: player, poop_trap: poop_trap} do
+      {pick_up_status, _player_picked_up, {_remove_object_status, _location}} = Player.pick_up(player, poop_trap)
+      assert pick_up_status == :ok
+      assert player.__struct__ == Gmylm.Player
+    end
 
+    test "it returns a world", %{player: player, world: world, poop_trap: poop_trap} do
+      
     end
 
     test "picking up an object in player's location removes it from the ground", %{player: player, poop_trap: poop_trap}  do

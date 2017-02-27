@@ -10,19 +10,21 @@ defmodule Gmylm do
   alias Gmylm.Interface
 
   def initialize_game do
-    {:ok, Player.initialize_player, World.initialize_world}
+    {:ok, Player.initialize_player, Location.initialize_locations}
   end
 
   def process_command(input, %Player{} = player, [%Location{}|_]= world) do
-    Gmylm.Interface.controls
+    # IO.puts "DEBUG: Input was #{input}"
+    Gmylm.Interface.controls(input, player, world).()
   end
 
   def game_loop(%Player{} = player, [%Location{}|_] = world, victory \\ nil) do
     cond do
       victory == nil ->
       input = IO.gets "> "
-      process_command(input, player, world)
-      game_loop(player, world, victory)
+      {_, new_player, new_world} = process_command(input, player, world) |>
+      Interface.render_output
+      game_loop(new_player, new_world, victory)
       true ->
       "You win!"
     end
@@ -30,7 +32,7 @@ defmodule Gmylm do
 
   def start_game do
     {_status, player, world} = Gmylm.initialize_game
-    game_loop(player, world)
+    game_loop(player, world, nil)
   end
 
   def console(%Player{} = player, [%Location{}|_] = world) do
