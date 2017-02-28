@@ -62,8 +62,8 @@ defmodule Gmylm.World.Location do
     {:ok,
     location        |>
     Map.from_struct |>
-    #Enum.each(fn {k, v} -> IO.puts {k, v} end)}
-    Enum.reject(fn {k, v} -> v == nil || is_list v || v if k == 'description' || v if k == "name" end) |>
+    Enum.reject(fn {k, v} -> v == nil || is_list v end)           |>
+    Enum.reject(fn {k, _} -> k == :name || k == :description end) |>
     Enum.into(%{})}
   end
 end
