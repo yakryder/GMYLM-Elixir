@@ -28,8 +28,7 @@ defmodule Gmylm.HelperTest do
   describe "get_exits/1" do
     test "it returns only the exits from a %Location{}", %{world: world} do
       [location|_]    = world
-      {status, exits} = Helper.get_exits(location)
-      assert status == :ok
+      exits = Helper.get_exits(location)
       assert exits  == [down: nil, east: nil, north: nil, south: "Laundry Room",
                         up: "Up in my favorite tree", west: nil]
     end

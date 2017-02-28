@@ -5,6 +5,7 @@ defmodule Gmylm.World.Location do
   alias Gmylm.World.Location
   alias Gmylm.World.Object
   alias Gmylm.Player
+  alias Gmylm.Helper
 
   @doc """
   Struct for Locations.
@@ -60,10 +61,8 @@ defmodule Gmylm.World.Location do
 
   def available_exits(%Location{} = location) do
     {:ok,
-    location        |>
-    Map.from_struct |>
-    Enum.reject(fn {k, v} -> v == nil || is_list v end)           |>
-    Enum.reject(fn {k, _} -> k == :name || k == :description end) |>
-    Enum.map(   fn {k, v} -> "#{to_string(k)}: #{v}" end)}
+    location         |>
+    Helper.get_exits |>
+    Enum.map(fn {k, v} -> "#{to_string(k)}: #{v}" end)}
   end
 end

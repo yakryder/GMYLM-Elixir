@@ -23,8 +23,8 @@ defmodule Gmylm.Helper do
   @spec get_exits(%Location{}) :: map
 
   def get_exits(%Location{} = location) do
-    {:ok, location  |>
+    location        |>
     Map.from_struct |>
-    Enum.filter(fn {k, _} -> k == :north || k == :south || k == :west || k == :east || k == :up || k == :down end)}
+    Enum.filter(fn {k, _} -> k == :north || k == :south || k == :west || k == :east || k == :up || k == :down end)
   end
 end
