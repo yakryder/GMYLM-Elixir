@@ -126,9 +126,9 @@ defmodule Gmylm.World.LocationTest do
     test "it returns the available exits of a location", %{hallway: hallway} do
       {status, exits} = Location.available_exits(hallway)
       assert status == :ok
-      assert exits == %{down: "Basement", east: "Downstairs Bathroom",
-              north: "Laundry Room", south: "Foyer", up: "Upstairs Hallway",
-              west: "Kitchen"}
+      assert exits  == ["down: Basement", "east: Downstairs Bathroom",
+             "north: Laundry Room", "south: Foyer", "up: Upstairs Hallway",
+             "west: Kitchen"]
     end
   end
 end

@@ -17,7 +17,7 @@ defmodule Gmylm.World.Object do
     iex> Object.initialize_objects |> Enum.count
     47
 
-    iex> Object.initialize_objects |> Gmylm.all_elements_are?(Gmylm.World.Object)
+    iex> Object.initialize_objects |> Gmylm.Helper.all_elements_are?(Gmylm.World.Object)
     true
   """
 

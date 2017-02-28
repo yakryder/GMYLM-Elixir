@@ -19,7 +19,7 @@ defmodule Gmylm.World.Location do
     iex> Location.initialize_locations |> Enum.count
     22
 
-    iex> Location.initialize_locations |> Gmylm.all_elements_are?(Gmylm.World.Location)
+    iex> Location.initialize_locations |> Gmylm.Helper.all_elements_are?(Gmylm.World.Location)
     true
   """
 
@@ -64,6 +64,6 @@ defmodule Gmylm.World.Location do
     Map.from_struct |>
     Enum.reject(fn {k, v} -> v == nil || is_list v end)           |>
     Enum.reject(fn {k, _} -> k == :name || k == :description end) |>
-    Enum.into(%{})}
+    Enum.map(   fn {k, v} -> "#{to_string(k)}: #{v}" end)}
   end
 end

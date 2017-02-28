@@ -38,15 +38,4 @@ defmodule Gmylm do
   def console(%Player{} = player, [%Location{}|_] = world) do
 
   end
-
-  @doc """
-  Returns a boolean that indicates whether every element in the list is one of
-  the indicated structs.
-  """
-
-  @spec all_elements_are?(list, any) :: boolean
-
-  def all_elements_are?([_head|_tail] = list, struct_name) do
-    Enum.all?(list, fn(element) -> element.__struct__ == struct_name end)
-  end
 end
