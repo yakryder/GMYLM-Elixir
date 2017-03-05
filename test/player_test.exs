@@ -82,7 +82,7 @@ defmodule Gmylm.PlayerTest do
     test "looking shows the description of the player's current location", %{player: player, world: world} do
       {look_status, location_description, _player, _world} = Player.look(player, world)
       assert look_status == :ok
-      assert location_description == "The hallway has wooden floors...not as much fun as the kitchen floors. <br><br>Theres not too much to do here, but from here I can go upstairs to the bedrooms and stuff, or down to the basement!\\n\\nTo the east is the bathroom, to the west is the kitchen, the southern exit leads back to the foyer and the north goes to the laundry room towards the backyard."
+      assert location_description == "The hallway has wooden floors...not as much fun as the kitchen floors. <br><br>Theres not too much to do here, but from here I can go upstairs to the bedrooms and stuff, or down to the basement!\\n\\nTo the east is the bathroom, to the west is the kitchen, the southern exit leads back to the foyer and the north goes to the laundry room towards the backyard.\n\ndown: Basement, east: Downstairs Bathroom, north: Laundry Room, south: Foyer, up: Upstairs Hallway, west: Kitchen, "
     end
 
     test "it returns a player", %{player: player, world: world} do
@@ -110,7 +110,7 @@ defmodule Gmylm.PlayerTest do
     end
 
     test "it returns a world", %{player: player, world: world, poop_trap: poop_trap} do
-      
+
     end
 
     test "picking up an object in player's location removes it from the ground", %{player: player, poop_trap: poop_trap}  do
