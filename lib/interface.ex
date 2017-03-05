@@ -12,8 +12,10 @@ alias Gmylm.Interface
        "east\n"  => fn -> Player.move(:east, player, world)  end,
        "south\n" => fn -> Player.move(:south, player, world) end,
        "west\n"  => fn -> Player.move(:west, player, world)  end,
+       "up\n"    => fn -> Player.move(:up, player, world)  end,
+       "down\n"  => fn -> Player.move(:down, player, world)  end,
        "look\n"  => fn -> Player.look(player, world) end,
-     } |> Map.get(input)
+     } |> Map.get(input, fn() -> {:ok, "That's not something you can do", player, world} end)
   end
 
   def render_output({_look_status, description, player, world}) do
