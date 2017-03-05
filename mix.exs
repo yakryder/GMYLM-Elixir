@@ -32,7 +32,8 @@ defmodule Gmylm.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [{:credo, "~> 0.5", only: [:dev, :test]},
-     {:yaml_elixir, "~> 1.3.0"}]
+     {:yaml_elixir, "~> 1.3.0"},
+     {:ex_doc, "~> 0.14", only: :dev, runtime: false}]
   end
 
   # defp elixirc_paths(:test), do: ["lib", "test/test_helpers"]
