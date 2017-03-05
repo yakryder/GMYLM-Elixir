@@ -59,10 +59,9 @@ defmodule Gmylm.World.Location do
     end
   end
 
-  def available_exits(%Location{} = location) do
-    {:ok,
+  def formatted_exits(%Location{} = location) do
     location         |>
     Helper.get_exits |>
-    Enum.map(fn {k, v} -> "#{to_string(k)}: #{v}" end)}
+    Enum.map(fn {k, v} -> "#{to_string(k)}: #{v}, " end)
   end
 end
