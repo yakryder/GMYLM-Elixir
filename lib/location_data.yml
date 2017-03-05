@@ -1,16 +1,28 @@
 ---
 # In game locations
 - :name: Backyard
-  :description: Our backyard is awesome.  Theres a bunch of trees and a tall fence all the way around.  I like to have water gun fights or invent tree-climbing tools out here.\n\nThe door at the south end of the yard leads back inside to the laundry room.  The only other place to go from here is up a tree!
+  :description: >+
+    Our backyard is awesome.  Theres a bunch of trees and a tall fence all the way around.  I like to have water gun fights or invent tree-climbing tools out here.
+
+
+    The door at the south end of the yard leads back inside to the laundry room.  The only other place to go from here is up a tree!
   :south: Laundry Room
   :up: Up in my favorite tree
   :on_ground: []
 - :name: Basement
-  :description: The basement's not scary, okay?  Some people say it is but I say its only scary if theres a storm and the lights are out and something is not put away where you expect it to be and it looks like a person in the shadows.  Otherwise the basement is neat.  It's full of tools and stuff.\n\nThe only way out is back up the stairs.
+  :description: >+
+    The basement's not scary, okay?  Some people say it is but I say its only scary if theres a storm and the lights are out and something is not put away where you expect it to be and it looks like a person in the shadows.  Otherwise the basement is neat.  It's full of tools and stuff.
+
+
+    The only way out is back up the stairs.
   :up: Hallway
   :on_ground: []
 - :name: Dining Room
-  :description: This place is <i>fancy</i>.  I like the table in here because its big enough that I can make inventions on it, but I have to put down newspaper first, and I have to clear it off before dinner every night.\n\nThe kitchen is just north, so you can bring food in here to eat, and the foyer is just east, so you can bring guests in here without letting them see the rest of the messy house.
+  :description: >+
+    This place is <i>fancy</i>.  I like the table in here because its big enough that I can make inventions on it, but I have to put down newspaper first, and I have to clear it off before dinner every night.
+
+
+    The kitchen is just north, so you can bring food in here to eat, and the foyer is just east, so you can bring guests in here without letting them see the rest of the messy house.
   :north: Kitchen
   :east: Foyer
   :on_ground: []
