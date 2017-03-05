@@ -28,7 +28,7 @@ defmodule Gmylm.Player do
   @spec move(atom, %Player{}, [%Location{}]) :: {atom, %Player{}, [%Location{}]}
 
   def move(direction, %Player{} = player, [%Location{}|_] = world) do
-    {:ok, %Player{player | location: Enum.find(world, nil,
+    {:ok, %Player{player | location: Enum.find(world, player.location,
     fn(location) -> location.name == Map.get(player.location, direction) end)}, world}
     # Want to have look called everytime we call move
   end
@@ -40,7 +40,7 @@ defmodule Gmylm.Player do
   @spec look(%Player{}, [%Location{}]) :: {atom, String.t, %Player{}, [%Location{}]}
 
   def look(%Player{} = player, [%Location{}|_] = world) do
-    {:ok, player.location.description, player, world}
+    {:ok, "#{player.location.description}\n\n#{Location.formatted_exits(player.location)}", player, world}
   end
 
   @spec pick_up(%Player{}, %Object{}) :: {atom, %Player{}, %Object{}}
