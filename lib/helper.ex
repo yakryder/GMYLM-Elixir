@@ -25,6 +25,7 @@ defmodule Gmylm.Helper do
   def get_exits(%Location{} = location) do
     location        |>
     Map.from_struct |>
-    Enum.filter(fn {k, _} -> k == :north || k == :south || k == :west || k == :east || k == :up || k == :down end)
+    Enum.filter(fn {k, v} -> k == :north || k == :south || k == :west || k == :east || k == :up || k == :down end) |>
+    Enum.reject(fn {_, v} -> v == nil end)
   end
 end
