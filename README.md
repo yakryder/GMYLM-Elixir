@@ -1,19 +1,5 @@
 # Gmylm
 
-**TODO: Add description**
+This is an Elixir port of the text adventure game, ["Give Me Your Lunch Money"](http://www.adrift.co/game/1197). 
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `gmylm` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [{:gmylm, "~> 0.1.0"}]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/gmylm](https://hexdocs.pm/gmylm).
-
+It was meticulously and lovingly created by my friend Daniel C. Berlin using the Adrift Interactive Fiction Toolkit, and features an original soundtrack of my composition.
