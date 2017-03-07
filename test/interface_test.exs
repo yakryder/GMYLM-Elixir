@@ -3,7 +3,7 @@ defmodule Gmylm.InterfaceTest do
     Tests the interface for Gmylm
   """
   use ExUnit.Case, async: true
-  doctest Gmylm
+  doctest Gmylm.Interface
 
   test "it exists" do
     assert Gmylm.Interface.__info__(:functions)
