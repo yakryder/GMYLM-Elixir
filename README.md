@@ -1,19 +1,26 @@
 # Gmylm
 
-**TODO: Add description**
+This is an Elixir port of the text adventure game, ["Give Me Your Lunch Money"](http://www.adrift.co/game/1197). 
 
-## Installation
+It was meticulously and lovingly created by my friend Daniel C. Berlin using the Adrift Interactive Fiction Toolkit, and features an original soundtrack of my composition.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `gmylm` to your list of dependencies in `mix.exs`:
+How to Play
+----------
 
-```elixir
-def deps do
-  [{:gmylm, "~> 0.1.0"}]
-end
+```
+iex -S mix
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/gmylm](https://hexdocs.pm/gmylm).
+And then run Gmylm.start_game, e.g. 
 
+```
+Interactive Elixir (1.4.2) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)> Gmylm.start_game
+> north
+Hankin is my school.  The school is a pretty cool building.  Made of brick and really old with designs in the stone parts.  I like the carvings of gears, and the one of the people dancing.  There are lots of kids out in front of the school right now because the bell just rang.
+
+east: Hankin School Playground, west: The Park, 
+
+```
+
+Other commands include `north`, `east`, `south`, `west`, `up`, `down`, `look`
