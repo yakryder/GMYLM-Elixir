@@ -5,7 +5,11 @@ defmodule Gmylm.Interface do
 alias Gmylm.Player
 alias Gmylm.World.Location
 alias Gmylm.Interface
-
+  # GenServer this potentially
+  # ?? Optional parameter to controls to pass in module
+  # defaulting to player
+  # pass in module
+  # More details from Ben or Mock as noun not verb
   def controls(input, %Player{} = player, [%Location{}|_] = world) do
     %{
        "north\n" => fn -> Player.move(:north, player, world) end,

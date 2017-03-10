@@ -7,7 +7,7 @@ defmodule Gmylm.World do
   alias Gmylm.World.Location
   alias Gmylm.World.Object
 
-  defstruct locations: []
+  defstruct locations: [], events: []
 
   def initialize_world do
     %World{locations: Location.initialize_locations}
