@@ -5,13 +5,15 @@ defmodule GmylmTest do
   use ExUnit.Case, async: true
   import ExUnit.CaptureIO
 
-  alias Gmylm.World.Location
+  alias Gmylm
   alias Gmylm.Player
-  doctest Gmylm
+  alias Gmylm.World
+  alias Gmylm.World.Location
+  # doctest Gmylm
 
   setup_all do
-    world = Location.initialize_locations
-    {:ok, world: world}
+    game = Gmylm.initialize_game
+    {:ok, game: game}
   end
 
   test "it exists" do
@@ -27,8 +29,17 @@ defmodule GmylmTest do
   end
 
   describe "game_loop/2" do
-    # test "it has a prompt", %{world: world} do
+    # test "it has a prompt", %{game: game} do
     #   assert capture_io(Gmylm.game_loop(%Player{}, world, true)) =~ "> "
     # end
+  end
+
+  describe "initialize_game/0" do
+    test "it returns a %Player{} and a %World{}", %{game: game} do
+      {status, player, world} = game
+      assert status == :ok
+      assert player.__struct__ == Gmylm.Player
+      assert world.__struct__  == Gmylm.World
+    end
   end
 end

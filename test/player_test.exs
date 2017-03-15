@@ -4,15 +4,16 @@ defmodule Gmylm.PlayerTest do
   """
   use ExUnit.Case, async: true
   alias Gmylm.Player
+  alias Gmylm.World
   alias Gmylm.World.Location
   alias Gmylm.World.Object
 
   doctest Player
 
   setup_all do
-    world  = Location.initialize_locations
+    world     = World.initialize_world
     poop_trap = %Object{name: "Poop Trap"}
-    player = %Player{location: %Location{Enum.find(world, nil, fn(location) -> location.down end) | on_ground: [poop_trap]}}
+    player    = %Player{location: %Location{Enum.find(world.locations, nil, fn(location) -> location.down end) | on_ground: [poop_trap]}}
     {:ok, player: player, world: world, poop_trap: poop_trap}
   end
 
@@ -92,7 +93,7 @@ defmodule Gmylm.PlayerTest do
 
     test "it returns a world", %{player: player, world: world} do
       {_look_status, _location_description, _player, world} = Player.look(player, world)
-      assert world |> Enum.all?(fn(element) -> element.__struct__ == Gmylm.World.Location end)
+      assert world.__struct__ == Gmylm.World
     end
   end
 

@@ -10,7 +10,7 @@ defmodule Gmylm do
   alias Gmylm.Interface
 
   def initialize_game do
-    {:ok, Player.initialize_player, Location.initialize_locations}
+    {:ok, Player.initialize_player, World.initialize_world}
   end
 
   def process_command(input, %Player{} = player, [%Location{}|_]= world) do

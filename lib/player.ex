@@ -3,6 +3,7 @@ defmodule Gmylm.Player do
   Player data structure and Player functions
   """
   alias Gmylm.Player
+  alias Gmylm.World
   alias Gmylm.World.Location
   alias Gmylm.World.Object
 
@@ -25,10 +26,10 @@ defmodule Gmylm.Player do
   @doc """
   Moves the player in the specified direction.
   """
-  @spec move(atom, %Player{}, [%Location{}]) :: {atom, %Player{}, [%Location{}]}
+  @spec move(atom, %Player{}, %World{}) :: {atom, %Player{}, %World{}}
 
-  def move(direction, %Player{} = player, [%Location{}|_] = world) do
-    {:ok, %Player{player | location: Enum.find(world, player.location,
+  def move(direction, %Player{} = player, %World{} = world) do
+    {:ok, %Player{player | location: Enum.find(world.locations, player.location,
     fn(location) -> location.name == Map.get(player.location, direction) end)}, world}
     # Want to have look called everytime we call move
   end
@@ -37,9 +38,9 @@ defmodule Gmylm.Player do
   Looks at the current location.
   """
 
-  @spec look(%Player{}, [%Location{}]) :: {atom, String.t, %Player{}, [%Location{}]}
+  @spec look(%Player{}, %World{}) :: {atom, String.t, %Player{}, %World{}}
 
-  def look(%Player{} = player, [%Location{}|_] = world) do
+  def look(%Player{} = player, %World{} = world) do
     {:ok, "#{player.location.description}\n\n#{Location.formatted_exits(player.location)}", player, world}
   end
 
