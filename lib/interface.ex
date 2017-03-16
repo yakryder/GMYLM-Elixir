@@ -3,7 +3,7 @@ defmodule Gmylm.Interface do
     Interface for GMYLM.
   """
 alias Gmylm.Player
-alias Gmylm.World.Location
+alias Gmylm.World
 alias Gmylm.Interface
   # GenServer this potentially
   # ?? Optional parameter to controls to pass in module
