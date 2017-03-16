@@ -10,7 +10,7 @@ alias Gmylm.Interface
   # defaulting to player
   # pass in module
   # More details from Ben or Mock as noun not verb
-  def controls(input, %Player{} = player, [%Location{}|_] = world) do
+  def controls(input, %Player{} = player, %World{} = world) do
     %{
        "north\n" => fn -> Player.move(:north, player, world) end,
        "east\n"  => fn -> Player.move(:east, player, world)  end,
