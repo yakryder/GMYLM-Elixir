@@ -22,12 +22,12 @@ defmodule Gmylm do
     cond do
       # how am I gonna trigger the event?
       victory == nil ->
-      input = IO.gets "> "
-      {_, new_player, new_world} = process_command(input, player, world) |>
-      Interface.render_output
-      game_loop(new_player, new_world, victory)
+        input = IO.gets "> "
+        {_, new_player, new_world} = process_command(input, player, world) |>
+        Interface.render_output
+        game_loop(new_player, new_world, victory)
       true ->
-      "You win!"
+        "You win!"
     end
   end
 
