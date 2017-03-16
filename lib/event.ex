@@ -32,6 +32,11 @@ defmodule Gmylm.World.Event do
     Enum.map(fn(object_map) -> Map.merge(%Event{}, object_map) end)
   end
 
+  # A singular for this would be nice -- if only for testing purposes for now -- that loads just a single Event
+  def initialize_event do
+
+  end
+
   def run do
     # Display text
     # Run associated code if it exists

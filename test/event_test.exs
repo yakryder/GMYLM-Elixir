@@ -10,6 +10,6 @@ defmodule Gmylm.World.EventTest do
 
   doctest Event
   describe "intialize_events/2" do
-    
+    # Do I need player and world to output?
   end
 end

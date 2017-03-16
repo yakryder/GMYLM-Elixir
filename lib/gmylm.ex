@@ -13,13 +13,14 @@ defmodule Gmylm do
     {:ok, Player.initialize_player, World.initialize_world}
   end
 
-  def process_command(input, %Player{} = player, [%Location{}|_]= world) do
+  def process_command(input, %Player{} = player, %World{} = world) do
     # IO.puts "DEBUG: Input was #{input}"
     Gmylm.Interface.controls(input, player, world).()
   end
 
-  def game_loop(%Player{} = player, [%Location{}|_] = world, victory \\ nil) do
+  def game_loop(%Player{} = player, %World{} = world, victory \\ nil) do
     cond do
+      # how am I gonna trigger the event?
       victory == nil ->
       input = IO.gets "> "
       {_, new_player, new_world} = process_command(input, player, world) |>
@@ -28,6 +29,22 @@ defmodule Gmylm do
       true ->
       "You win!"
     end
+  end
+
+  # need to pass game loop an event to run if relevant
+  # how do we know when events are to be run?
+  # Certain commands run events in certain contexts?
+  # Run event when player arrives at location 1st time?
+  # 'Visited' flag for locations?
+
+  def event_loop(%Player{} = player, %World{} = world) do
+    # Need a way to divide events into parts depending on where ... is
+    # Maybe split on ..., then add it back in for output...like at the end of each block of text
+    # Just delete or ... the last empty string
+  end
+
+  def event_loop(%Player{} = player, %World{} = world) do
+
   end
 
   def start_game do

@@ -28,4 +28,16 @@ defmodule Gmylm.Helper do
     Enum.filter(fn {k, v} -> k == :north || k == :south || k == :west || k == :east || k == :up || k == :down end) |>
     Enum.reject(fn {_, v} -> v == nil end)
   end
+
+  @doc """
+  Removes nil values from a list.
+  """
+
+  ## Examples
+
+  # @spec compact(list) :: list
+  #
+  # def compact do
+  # 
+  # end
 end
