@@ -8,9 +8,13 @@ defmodule Gmylm.World do
   alias Gmylm.World.Object
   alias Gmylm.World.Event
 
-  defstruct locations: [], events: []
+  defstruct locations: [], objects: [], events: []
 
   def initialize_world do
-    %World{locations: Location.initialize_locations, events: Event.initialize_events}
+    %World{
+            locations: Location.initialize_locations,
+            objects:   Object.initialize_objects,
+            events:    Event.initialize_events
+          }
   end
 end
