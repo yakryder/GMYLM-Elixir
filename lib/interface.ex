@@ -32,8 +32,8 @@ alias Gmylm.Interface
     {:ok, player, world}
   end
 
-
-
-
+  def render_event(%World{ locations: _l, objects: _o, events: [ event | _tail] } = world) do
+    IO.puts event.text
+  end
 
 end
