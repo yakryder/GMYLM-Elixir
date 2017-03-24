@@ -9,11 +9,14 @@ defmodule GmylmTest do
   alias Gmylm.Player
   alias Gmylm.World
   alias Gmylm.World.Location
+  alias Gmylm.World.Objects
+  alias Gmylm.World.Event
   # doctest Gmylm
 
   setup_all do
     game = Gmylm.initialize_game
-    {:ok, game: game}
+    { _status, _player, %World{locations: locations, objects: objects, events: events} } = game
+    {:ok, game: game, locations: locations, objects: objects, events: events}
   end
 
   test "it exists" do
@@ -40,6 +43,12 @@ defmodule GmylmTest do
       assert status == :ok
       assert player.__struct__ == Gmylm.Player
       assert world.__struct__  == Gmylm.World
+    end
+
+    test "it displays welcome text on game start", %{events: events} do
+      event = events |> List.first
+      output = capture_io(fn -> Gmylm.initialize_game end)
+      assert String.length(output) > 500
     end
   end
 end
