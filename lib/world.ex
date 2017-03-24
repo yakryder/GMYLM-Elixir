@@ -12,9 +12,9 @@ defmodule Gmylm.World do
 
   def initialize_world do
     %World{
-            locations: Location.initialize_locations,
-            objects:   Object.initialize_objects,
-            events:    Event.initialize_events
+              locations: Location.initialize_locations,
+              objects:   Object.initialize_objects,
+              events:    Event.initialize_events
           }
   end
 end
