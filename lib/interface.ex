@@ -4,7 +4,9 @@ defmodule Gmylm.Interface do
   """
 alias Gmylm.Player
 alias Gmylm.World
+alias Gmylm.World.Event
 alias Gmylm.Interface
+
   # GenServer this potentially
   # ?? Optional parameter to controls to pass in module
   # defaulting to player
@@ -19,6 +21,7 @@ alias Gmylm.Interface
        "up\n"    => fn -> Player.move(:up, player, world)  end,
        "down\n"  => fn -> Player.move(:down, player, world)  end,
        "look\n"  => fn -> Player.look(player, world) end,
+       "quit\n"  => fn -> Gmylm.game_loop(player, world, "victory") end
      } |> Map.get(input, fn() -> {:ok, "That's not something you can do", player, world} end)
   end
 
@@ -32,7 +35,7 @@ alias Gmylm.Interface
     {:ok, player, world}
   end
 
-  def render_event(%World{ locations: _l, objects: _o, events: [ event | _tail] } = world) do
+  def render_event(%Event{} = event) do
     IO.puts event.text
   end
 

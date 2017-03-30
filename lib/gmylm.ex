@@ -9,6 +9,10 @@ defmodule Gmylm do
   alias Gmylm.World.Object
   alias Gmylm.Interface
 
+  @doc """
+  Returns a player and a world struct in their initial state
+  """
+
   def initialize_game do
     {:ok, Player.initialize_player, World.initialize_world}
   end
@@ -49,19 +53,10 @@ defmodule Gmylm do
   # Run event when player arrives at location 1st time?
   # 'Visited' flag for locations?
 
-  def event_loop(%Player{} = player, %World{} = world) do
-    # Need a way to divide events into parts depending on where ... is
-    # Maybe split on ..., then add it back in for output...like at the end of each block of text
-    # Just delete or ... the last empty string
-  end
-
-  def event_loop(%Player{} = player, %World{} = world) do
-
-  end
-
   def start_game do
     {_status, player, world} = Gmylm.initialize_game
-    game_loop(player, world, nil)
+    Gmylm.Interface.render_event(Enum.find(world.events, nil, fn(event) -> event.name == "Start Game" end))
+    game_loop(player, world)
   end
 
   def console(%Player{} = player, [%Location{}|_] = world) do

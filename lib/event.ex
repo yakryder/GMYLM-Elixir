@@ -29,7 +29,11 @@ defmodule Gmylm.World.Event do
   def initialize_events do
     "lib/data/event_data.yml"              |>
     YamlElixir.read_from_file(atoms: true) |>
-    Enum.map(fn(object_map) -> Map.merge(%Event{}, object_map) end)
+    Enum.map(&convert_to_event/1)
+  end
+
+  def convert_to_event(%{} = map) do
+    Map.merge(%Event{}, map)
   end
 
   # A singular for this would be nice -- if only for testing purposes for now -- that loads just a single Event
@@ -37,8 +41,6 @@ defmodule Gmylm.World.Event do
 
   end
 
-  def run do
-    # Display text
-    # Run associated code if it exists
-  end
+  # display text method
+  # do I need to take in everything or not?
 end

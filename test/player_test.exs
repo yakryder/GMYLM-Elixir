@@ -7,6 +7,7 @@ defmodule Gmylm.PlayerTest do
   alias Gmylm.World
   alias Gmylm.World.Location
   alias Gmylm.World.Object
+  alias Gmylm.Helper
 
   doctest Player
 
@@ -111,7 +112,9 @@ defmodule Gmylm.PlayerTest do
     end
 
     test "it returns a world", %{player: player, world: world, poop_trap: poop_trap} do
-
+      {pick_up_status, _player_picked_up, {_remove_object_status, _location}} = Player.pick_up(player, poop_trap)
+      assert pick_up_status == :ok
+      assert player.__struct__ == Gmylm.Player
     end
 
     test "picking up an object in player's location removes it from the ground", %{player: player, poop_trap: poop_trap}  do

@@ -47,11 +47,12 @@ defmodule GmylmTest do
       assert player.__struct__ == Gmylm.Player
       assert world.__struct__  == Gmylm.World
     end
+  end
 
-    test "it displays welcome text on game start", %{world: world} do
-      # event = events |> List.first
-      output = capture_io(fn -> Interface.render_event(world) end)
-      assert String.length(output) > 500
+  describe "start_game/0" do
+     test "it displays welcome text on game start", %{world: world} do
+      output = capture_io(fn -> Gmylm.start_game end)
+      assert output |> String.length > 500
     end
   end
 end
