@@ -12,7 +12,7 @@ defmodule Gmylm.Helper do
 
   @spec all_elements_are?(list, struct) :: boolean
 
-  def all_elements_are?([_head|_tail] = list, struct_name) do
+  def all_elements_are?([_|_] = list, struct_name) do
     Enum.all?(list, fn(element) -> element.__struct__ == struct_name end)
   end
 
