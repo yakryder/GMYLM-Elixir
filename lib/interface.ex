@@ -26,6 +26,16 @@ defmodule Gmylm.Interface do
      } |> Map.get(input, fn() -> {:ok, "That's not something you can do", player, world} end)
   end
 
+  # Example of how we might change Interface.controls/3 to make it 
+  # more modularized and easier to test
+
+  # "north\n" => {[Player, :move, [north, player, world)]}
+
+  # Could test like this
+  # assert controls("north") == {Player, :move, [north, player, world]}
+  # Might work like this: {module, fun, args} = Kernel.apply(module, fun, args)
+
+
   def render_output({_look_status, description, player, world}) do
     IO.puts description
     {:ok, player, world}

@@ -28,6 +28,23 @@ defmodule Gmylm.PlayerTest do
   west: "The Park"}
     end
 
+  # Steve
+
+    # world = %World{
+    #   locations: [
+    #     %Location{name: "Uptown", south: "Downtown"},
+    #     %Location{name: "Downtown", north: "Uptown"}
+    #   ]
+    # }
+    # player = %Player{
+    #   location: "Uptown"
+    # }
+    # {status, player, _world} = Player.move(:south, player, world)
+    # assert status == :ok
+    # assert player.location.name == "Downtown"
+
+    # assert {:ok, %Player{location: %{name: "Downtown"}, _world}} == Player.move(:south, player, world)
+
     test "player has an inventory that defaults to an empty list" do
       assert %Player{}.inventory == []
     end
