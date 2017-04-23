@@ -49,10 +49,10 @@ defmodule GmylmTest do
     end
   end
 
-  describe "start_game/0" do
-     test "it displays welcome text on game start", %{world: world} do
-      output = capture_io(fn -> Gmylm.start_game end)
-      assert output |> String.length > 500
-    end
-  end
+  # describe "start_game/0" do
+  #    test "it displays welcome text on game start", %{world: world} do
+  #     output = capture_io(fn -> Gmylm.start_game end)
+  #     assert output |> String.length > 500
+  #   end
+  # end
 end

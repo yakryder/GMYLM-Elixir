@@ -2,10 +2,11 @@ defmodule Gmylm.Interface do
   @moduledoc """
     Interface for GMYLM.
   """
-alias Gmylm.Player
-alias Gmylm.World
-alias Gmylm.World.Event
-alias Gmylm.Interface
+  alias Gmylm.Player
+  alias Gmylm.World
+  alias Gmylm.World.Location
+  alias Gmylm.World.Event
+  alias Gmylm.Interface
 
   # GenServer this potentially
   # ?? Optional parameter to controls to pass in module
@@ -14,14 +15,14 @@ alias Gmylm.Interface
   # More details from Ben or Mock as noun not verb
   def controls(input, %Player{} = player, %World{} = world) do
     %{
-       "north\n" => fn -> Player.move(:north, player, world) end,
-       "east\n"  => fn -> Player.move(:east, player, world)  end,
-       "south\n" => fn -> Player.move(:south, player, world) end,
-       "west\n"  => fn -> Player.move(:west, player, world)  end,
-       "up\n"    => fn -> Player.move(:up, player, world)  end,
-       "down\n"  => fn -> Player.move(:down, player, world)  end,
-       "look\n"  => fn -> Player.look(player, world) end,
-       "quit\n"  => fn -> Gmylm.game_loop(player, world, "victory") end
+       "north" => fn -> Player.move(:north, player, world) end,
+       "east"  => fn -> Player.move(:east, player, world)  end,
+       "south" => fn -> Player.move(:south, player, world) end,
+       "west"  => fn -> Player.move(:west, player, world)  end,
+       "up"    => fn -> Player.move(:up, player, world)  end,
+       "down"  => fn -> Player.move(:down, player, world)  end,
+       "look"  => fn -> Player.look(player, world) end,
+       "quit"  => fn -> Gmylm.game_loop(player, world, "victory") end
      } |> Map.get(input, fn() -> {:ok, "That's not something you can do", player, world} end)
   end
 
@@ -36,7 +37,6 @@ alias Gmylm.Interface
   end
 
   def render_event(%Event{} = event) do
-    IO.puts event.text
+    Enum.each(event.text, fn(event_text_section) -> IO.puts event_text_section end) 
   end
-
 end
