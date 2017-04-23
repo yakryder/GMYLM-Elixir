@@ -10,7 +10,30 @@ defmodule Gmylm.World.Event do
   @doc """
   Struct for Events.
   """
-  defstruct name: nil, text: nil, code: nil
+  defstruct name: nil, text: nil, callback: nil, triggered: false
+
+  # Check for event in every game loop call
+
+  # Game Start
+
+  # The Bullies Arrive at the park
+  # Trigger: 
+    # Reenter the park from My Secret Stash with fishing line in your inventory
+
+  # Should we have another key of 'trigger_state' or similar for the Event struct?
+  # That defines the criteria for triggering the event?
+
+  # The Bullies do <SOME HORRIBLE THING>
+
+  # The Bullies arrive at the playground for the final showdown
+
+  # The final showdown
+
+    #) Event1
+    #) Event2
+    #) Event3
+
+  # Game victory    
 
   @doc """
   Initializes the game events as %Event{} structs.
