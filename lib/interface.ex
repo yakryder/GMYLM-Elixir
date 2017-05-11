@@ -13,17 +13,26 @@ defmodule Gmylm.Interface do
   # defaulting to player
   # pass in module
   # More details from Ben or Mock as noun not verb
+
+  # Responsibilities
+  # - receive a command
+  # - returns a tuple of module, function name, and list of arguments
   def controls(input, %Player{} = player, %World{} = world) do
     %{
-       "north" => fn -> Player.move(:north, player, world) end,
+       "north" => {Player, :move, [:north, player, world]},
        "east"  => fn -> Player.move(:east, player, world)  end,
        "south" => fn -> Player.move(:south, player, world) end,
        "west"  => fn -> Player.move(:west, player, world)  end,
        "up"    => fn -> Player.move(:up, player, world)  end,
        "down"  => fn -> Player.move(:down, player, world)  end,
-       "look"  => fn -> Player.look(player, world) end,
-       "quit"  => fn -> Gmylm.game_loop(player, world, "victory") end
-     } |> Map.get(input, fn() -> {:ok, "That's not something you can do", player, world} end)
+       "look"  => {Player, :look, [player, world]},
+       "quit"  => {Gmylm, :game_loop, [player, world, "victory"]}
+     } |> Map.get(input, {__MODULE__, :invalid_command, []})
+  end
+
+   #maybe?
+  def invalid_command do
+    "That's not something you can do"
   end
 
   # Example of how we might change Interface.controls/3 to make it 

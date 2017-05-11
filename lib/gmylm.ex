@@ -18,10 +18,24 @@ defmodule Gmylm do
     {:ok, Player.initialize_player, World.initialize_world}
   end
 
+  # Responsibilities
+  # - receive input from user
+  # - delegate to Interface.controls
+  # - invoke the returned function
   def process_command(input, %Player{} = player, %World{} = world) do
+    # do you want to check if valid first here?
     # IO.puts "DEBUG: Input was #{input}"
     Interface.controls(input, player, world).()
+
+    # Maybe?
+    case Interface.controls(input, player, world) do
+      {:ok, {module, func_name, args}} -> Kernel.apply(module, func_name, args)
+      {:error, message} -> nil # render message
+    end
   end
+
+  # Ultimately we want to invoke function that does a thing based on input
+  # Ultimately we want to do this Kernel.apply thing
 
   def game_loop(%Player{} = player, %World{} = world) do
     Interface.render_output({:ok, player, world})

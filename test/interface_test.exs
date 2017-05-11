@@ -25,39 +25,56 @@ defmodule Gmylm.InterfaceTest do
 
   end
 
-  test "north moves player north", %{player: player, world: world} do
-    {player_move_status, player_moved_north, _world} = Gmylm.process_command("north", player, world)
-    assert player_move_status == :ok
-    assert player_moved_north.location.name == "Laundry Room"
-  end
+  describe "Interface.controls/3" do
+    test "it should return a tuple of module, function, and arguments for directions" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("north", player, world) == {Player, :move, [:north, player, world]}
+    end  
 
-  test "east moves player east", %{player: player, world: world} do
-    {player_move_status, player_moved_east, _world} = Gmylm.process_command("east", player, world)
-    assert player_move_status == :ok
-    assert player_moved_east.location.name == "Downstairs Bathroom"
-  end
+    test "it should return a tuple of module, function, and arguments for look" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("look", player, world) == {Player, :look, [player, world]}
+    end  
 
-  test "west moves player west", %{player: player, world: world} do
-    {player_move_status, player_moved_west, _world} = Gmylm.process_command("west", player, world)
-    assert player_move_status == :ok
-    assert player_moved_west.location.name == "Kitchen"
-  end
+    test "it should return a tuple of module, function, and arguments for quit" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("quit", player, world) == {Gmylm, :game_loop, [player, world, "victory"]}
+    end  
 
-  test "south moves player south", %{player: player, world: world} do
-    {player_move_status, player_moved_west, _world} = Gmylm.process_command("south", player, world)
-    assert player_move_status == :ok
-    assert player_moved_west.location.name == "Foyer"
-  end
+    # test "north moves player north", %{player: player, world: world} do
+    #   {player_move_status, player_moved_north, _world} = Gmylm.process_command("north", player, world)
+    #   assert player_move_status == :ok
+    #   assert player_moved_north.location.name == "Laundry Room"
+    # end
 
-  test "up moves player up", %{player: player, world: world}  do
-    {player_move_status, player_moved_up, _world} = Gmylm.process_command("up", player, world)
-    assert player_move_status == :ok
-    assert player_moved_up.location.name == "Upstairs Hallway"
-  end
+    # test "east moves player east", %{player: player, world: world} do
+    #   {player_move_status, player_moved_east, _world} = Gmylm.process_command("east", player, world)
+    #   assert player_move_status == :ok
+    #   assert player_moved_east.location.name == "Downstairs Bathroom"
+    # end
 
-  test "down moves player down", %{player: player, world: world}  do
-    {player_move_status, player_moved_down, _world} = Gmylm.process_command("down", player, world)
-    assert player_move_status == :ok
-    assert player_moved_down.location.name == "Basement"
-  end
+    # test "west moves player west", %{player: player, world: world} do
+    #   {player_move_status, player_moved_west, _world} = Gmylm.process_command("west", player, world)
+    #   assert player_move_status == :ok
+    #   assert player_moved_west.location.name == "Kitchen"
+    # end
+
+    # test "south moves player south", %{player: player, world: world} do
+    #   {player_move_status, player_moved_west, _world} = Gmylm.process_command("south", player, world)
+    #   assert player_move_status == :ok
+    #   assert player_moved_west.location.name == "Foyer"
+    # end
+
+    # test "up moves player up", %{player: player, world: world}  do
+    #   {player_move_status, player_moved_up, _world} = Gmylm.process_command("up", player, world)
+    #   assert player_move_status == :ok
+    #   assert player_moved_up.location.name == "Upstairs Hallway"
+    # end
+
+    # test "down moves player down", %{player: player, world: world}  do
+    #   {player_move_status, player_moved_down, _world} = Gmylm.process_command("down", player, world)
+    #   assert player_move_status == :ok
+    #   assert player_moved_down.location.name == "Basement"
+    # end
+  end 
 end
