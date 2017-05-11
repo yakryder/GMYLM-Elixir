@@ -41,7 +41,7 @@ defmodule Gmylm.World.Event do
 
   Examples:
     iex> Event.initialize_events |> Enum.count
-    1
+    2
 
     iex> Event.initialize_events |> Gmylm.Helper.all_elements_are?(Gmylm.World.Event)
     true
