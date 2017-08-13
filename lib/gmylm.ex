@@ -25,12 +25,10 @@ defmodule Gmylm do
   def process_command(input, %Player{} = player, %World{} = world) do
     # do you want to check if valid first here?
     # IO.puts "DEBUG: Input was #{input}"
-    Interface.controls(input, player, world).()
-
-    # Maybe?
+    # Interface.controls(input, player, world).()
     case Interface.controls(input, player, world) do
-      {:ok, {module, func_name, args}} -> Kernel.apply(module, func_name, args)
-      {:error, message} -> nil # render message
+      {module, func_name, args} -> Kernel.apply(module, func_name, args)
+      # {:error, message} -> nil # render message
     end
   end
 

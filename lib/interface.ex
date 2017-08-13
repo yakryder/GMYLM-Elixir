@@ -19,20 +19,20 @@ defmodule Gmylm.Interface do
   # - returns a tuple of module, function name, and list of arguments
   def controls(input, %Player{} = player, %World{} = world) do
     %{
-       "north" => {Player, :move, [:north, player, world]},
-       "east"  => fn -> Player.move(:east, player, world)  end,
-       "south" => fn -> Player.move(:south, player, world) end,
-       "west"  => fn -> Player.move(:west, player, world)  end,
-       "up"    => fn -> Player.move(:up, player, world)  end,
-       "down"  => fn -> Player.move(:down, player, world)  end,
-       "look"  => {Player, :look, [player, world]},
-       "quit"  => {Gmylm, :game_loop, [player, world, "victory"]}
+       "north\n" => {Player, :move, [:north, player, world]},
+       "east\n"  => {Player, :move, [:east, player, world]},
+       "south\n" => {Player, :move, [:south, player, world]},
+       "west\n"  => {Player, :move, [:west, player, world]},
+       "up\n"    => {Player, :move, [:up, player, world]},
+       "down\n"  => {Player, :move, [:down, player, world]},
+       "look\n"  => {Player, :look, [player, world]},
+       "quit\n"  => {Gmylm, :game_loop, [player, world, "victory"]},
      } |> Map.get(input, {__MODULE__, :invalid_command, []})
   end
 
-   #maybe?
+  # maybe?
   def invalid_command do
-    "That's not something you can do"
+    {:error, "That's not something you can do"}
   end
 
   # Example of how we might change Interface.controls/3 to make it 
