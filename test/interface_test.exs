@@ -21,60 +21,45 @@ defmodule Gmylm.InterfaceTest do
     assert Gmylm.Interface.__info__(:functions)
   end
 
-  test "it has a game loop" do
-
-  end
-
   describe "Interface.controls/3" do
-    test "it should return a tuple of module, function, and arguments for directions" do
+    test "it should return a tuple of module, function, and arguments for north" do
       {world, player} = {%World{}, %Player{}}
-      assert Interface.controls("north", player, world) == {Player, :move, [:north, player, world]}
-    end  
+      assert Interface.controls("north\n", player, world) == {Player, :move, [:north, player, world]}
+    end
+
+    test "it should return a tuple of module, function, and arguments for east" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("east\n", player, world) == {Player, :move, [:east, player, world]}
+    end
+
+    test "it should return a tuple of module, function, and arguments for south" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("south\n", player, world) == {Player, :move, [:south, player, world]}
+    end
+
+    test "it should return a tuple of module, function, and arguments for west" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("west\n", player, world) == {Player, :move, [:west, player, world]}
+    end
+
+    test "it should return a tuple of module, function, and arguments for up" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("up\n", player, world) == {Player, :move, [:up, player, world]}
+    end
+
+    test "it should return a tuple of module, function, and arguments for down" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("down\n", player, world) == {Player, :move, [:down, player, world]}
+    end
 
     test "it should return a tuple of module, function, and arguments for look" do
       {world, player} = {%World{}, %Player{}}
-      assert Interface.controls("look", player, world) == {Player, :look, [player, world]}
-    end  
+      assert Interface.controls("look\n", player, world) == {Player, :look, [player, world]}
+    end
 
     test "it should return a tuple of module, function, and arguments for quit" do
       {world, player} = {%World{}, %Player{}}
-      assert Interface.controls("quit", player, world) == {Gmylm, :game_loop, [player, world, "victory"]}
-    end  
-
-    # test "north moves player north", %{player: player, world: world} do
-    #   {player_move_status, player_moved_north, _world} = Gmylm.process_command("north", player, world)
-    #   assert player_move_status == :ok
-    #   assert player_moved_north.location.name == "Laundry Room"
-    # end
-
-    # test "east moves player east", %{player: player, world: world} do
-    #   {player_move_status, player_moved_east, _world} = Gmylm.process_command("east", player, world)
-    #   assert player_move_status == :ok
-    #   assert player_moved_east.location.name == "Downstairs Bathroom"
-    # end
-
-    # test "west moves player west", %{player: player, world: world} do
-    #   {player_move_status, player_moved_west, _world} = Gmylm.process_command("west", player, world)
-    #   assert player_move_status == :ok
-    #   assert player_moved_west.location.name == "Kitchen"
-    # end
-
-    # test "south moves player south", %{player: player, world: world} do
-    #   {player_move_status, player_moved_west, _world} = Gmylm.process_command("south", player, world)
-    #   assert player_move_status == :ok
-    #   assert player_moved_west.location.name == "Foyer"
-    # end
-
-    # test "up moves player up", %{player: player, world: world}  do
-    #   {player_move_status, player_moved_up, _world} = Gmylm.process_command("up", player, world)
-    #   assert player_move_status == :ok
-    #   assert player_moved_up.location.name == "Upstairs Hallway"
-    # end
-
-    # test "down moves player down", %{player: player, world: world}  do
-    #   {player_move_status, player_moved_down, _world} = Gmylm.process_command("down", player, world)
-    #   assert player_move_status == :ok
-    #   assert player_moved_down.location.name == "Basement"
-    # end
-  end 
+      assert Interface.controls("quit\n", player, world) == {Gmylm, :game_loop, [player, world, "victory"]}
+    end
+  end
 end
