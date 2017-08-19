@@ -8,6 +8,9 @@ defmodule Gmylm.World do
   alias Gmylm.World.Object
   alias Gmylm.World.Event
 
+  # Player initializes to the same as Gmylm.Player.initialize_player/0, but World initializes to empty.
+  # They should behave the same 
+
   defstruct locations: [], objects: [], events: []
 
   def initialize_world do

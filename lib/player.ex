@@ -7,12 +7,18 @@ defmodule Gmylm.Player do
   alias Gmylm.World.Location
   alias Gmylm.World.Object
 
-  defstruct location: %Location{description: "Hankin is my school.  The school is a pretty cool building.  Made of brick and really old with designs in the stone parts.  I like the carvings of gears, and the one of the people dancing.  There are lots of kids out in front of the school right now because the bell just rang.",
-  down: nil, east: "Hankin School Playground",
-  name: "Hankin Elementary School", north: nil,
-  on_ground: ["Carvings of People Dancing",
-   "Spoiled Milk", "Balloon"], south: nil, up: nil,
-  west: "The Park"}, inventory: []
+  defstruct location: %Location{
+                                  description: "Hankin is my school.  The school is a pretty cool building.  Made of brick and really old with designs in the stone parts.  I like the carvings of gears, and the one of the people dancing.  There are lots of kids out in front of the school right now because the bell just rang.",
+                                  down:      nil,
+                                  east:      "Hankin School Playground",
+                                  name:      "Hankin Elementary School",
+                                  north:     nil,
+                                  on_ground: ["Carvings of People Dancing", "Spoiled Milk", "Balloon"], 
+                                  south:     nil,
+                                  up:        nil,
+                                  west:      "The Park"
+                               },
+            inventory: []
 
   @doc """
   Initializes a player.

@@ -17,6 +17,11 @@ defmodule Gmylm.Interface do
   # Responsibilities
   # - receive a command
   # - returns a tuple of module, function name, and list of arguments
+
+  # Controls should be a bare map
+  # process_input/map_input_to_command/get_command_from_input should pipe that map to the Map.get
+  # run_command should be a seperate function that actually executes the code altering the world state
+  # bring back status codes?
   def controls(input, %Player{} = player, %World{} = world) do
     %{
        "north\n" => {Player, :move, [:north, player, world]},
@@ -34,16 +39,6 @@ defmodule Gmylm.Interface do
   def invalid_command do
     {:error, "That's not something you can do"}
   end
-
-  # Example of how we might change Interface.controls/3 to make it 
-  # more modularized and easier to test
-
-  # "north\n" => {[Player, :move, [north, player, world)]}
-
-  # Could test like this
-  # assert controls("north") == {Player, :move, [north, player, world]}
-  # Might work like this: {module, fun, args} = Kernel.apply(module, fun, args)
-
 
   def render_output({_look_status, description, player, world}) do
     IO.puts description

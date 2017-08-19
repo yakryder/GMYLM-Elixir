@@ -36,6 +36,8 @@ defmodule Gmylm.World.Location do
   Adds an object to a location.
   """
 
+  # Maybe all this inventory stuff should live in its own module 
+
   @spec add_object(%Object{}, %Location{}) :: %Location{}
 
   def add_object(%Object{} = object, %Location{} = current_location) do
