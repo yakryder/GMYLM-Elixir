@@ -32,22 +32,60 @@ defmodule Gmylm do
     end
   end
 
-  # Ultimately we want to invoke function that does a thing based on input
-  # Ultimately we want to do this Kernel.apply thing
+  # ASSUMPTION: I don't think we're going to need a case where 
+  # the event is run and then a seperate description is output
 
-  def game_loop(%Player{} = player, %World{} = world) do
+  # What happens when you pick up an object?
+  # Gets added to player's inventory
+  # Gets removed from current location
+  
+
+  # What should the game loop do?
+  # Run an event if there is one
+  # Show a description (of the event or location)
+  # Take input (from player or maybe passed in?)
+  # Fetch the corresponding command for the player input
+  # Run that command
+  # Return the new game state
+  # Pass that state into a new game loop call if not incrementally called
+
+  # We should maybe have just one function here. Maybe also break down this loop into a pipe chain
+
+  # this one is for a game loop call without an event
+
+
+  # what would we call a recurse game loop function
+    # game_turn 
+    # render_new_game_state
+
+
+
+
+  # this implementation has unhandled cases  
+  def game_loop(input \\ nil, event \\ nil, incremental \\ false, %Player{} = player, %World{} = world) do
     Interface.render_output({:ok, player, world})
-    input = IO.gets "> "
+    cond do
+      input == nil -> input = IO.gets "> "
+    end   
+    cond do
+      event == %Event{} -> event |> Interface.render_event 
+    end  
+    
     {_, new_player, new_world} = process_command(input, player, world)
-    game_loop(new_player, new_world)
+    case incremental do
+      false -> game_loop(new_player, new_world)
+      true  -> {new_player, new_world}
+    end  
   end
 
-  def game_loop(%Player{} = player, %World{} = world, %Event{} = event) do
-    Interface.render_event(world)
-    input = IO.gets "> "
-    {_, new_player, new_world} = process_command(input, player, world)
-    game_loop(new_player, new_world)
-  end  
+  # this one is for a game loop call with an event 
+  
+  # def game_loop(%Player{} = player, %World{} = world, %Event{} = event) do
+  #   Interface.render_event(world)
+  #   input = IO.gets "> "
+  #   {_, new_player, new_world} = process_command(input, player, world)
+  #   game_loop(new_player, new_world)
+  # end  
 
   # need to pass game loop an event to run if relevant
   # how do we know when events are to be run?
@@ -57,7 +95,7 @@ defmodule Gmylm do
 
   def start_game do
     {_status, player, world} = Gmylm.initialize_game
-    Enum.find(world.events, nil, fn(event) -> event.name == "Start Game" end) |>
+    Enum.find(world.events, fn(event) -> event.name == "Start Game" end) |>
     Gmylm.Interface.render_event
     game_loop(player, world)
   end
