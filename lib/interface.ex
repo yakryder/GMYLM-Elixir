@@ -40,10 +40,14 @@ defmodule Gmylm.Interface do
     {:error, "That's not something you can do"}
   end
 
+  # There's some funk down here
+
   def render_output({_look_status, description, player, world}) do
     IO.puts description
     {:ok, player, world}
   end
+
+  # THIS IS GROSS!
 
   def render_output({_move_status, player, world}) do
     Interface.render_output(Player.look(player, world))
