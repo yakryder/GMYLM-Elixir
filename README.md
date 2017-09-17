@@ -24,3 +24,14 @@ east: Hankin School Playground, west: The Park,
 ```
 
 Other commands include `north`, `east`, `south`, `west`, `up`, `down`, `look`
+
+TODO
+------
+
+* events (e.g. altercation with bullies)
+
+* pick things up
+* drop them
+* assemble things into traps
+* do a little dance
+
