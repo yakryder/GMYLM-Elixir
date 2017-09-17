@@ -26,6 +26,7 @@ defmodule Gmylm.World.Location do
 
   @spec initialize_locations :: [%Location{}]
 
+  # Deviant piping
   def initialize_locations do
     "lib/data/location_data.yml"           |>
     YamlElixir.read_from_file(atoms: true) |>
@@ -35,6 +36,8 @@ defmodule Gmylm.World.Location do
   @doc """
   Adds an object to a location.
   """
+
+  # Maybe all this inventory stuff should live in its own module 
 
   @spec add_object(%Object{}, %Location{}) :: %Location{}
 

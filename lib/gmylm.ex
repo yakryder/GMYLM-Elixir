@@ -7,29 +7,85 @@ defmodule Gmylm do
   alias Gmylm.World
   alias Gmylm.World.Location
   alias Gmylm.World.Object
+  alias Gmylm.World.Event
   alias Gmylm.Interface
+
+  @doc """
+  Returns a player and a world struct in their initial state
+  """
 
   def initialize_game do
     {:ok, Player.initialize_player, World.initialize_world}
   end
 
+  # Responsibilities
+  # - receive input from user
+  # - delegate to Interface.controls
+  # - invoke the returned function
   def process_command(input, %Player{} = player, %World{} = world) do
+    # do you want to check if valid first here?
     # IO.puts "DEBUG: Input was #{input}"
-    Gmylm.Interface.controls(input, player, world).()
-  end
-
-  def game_loop(%Player{} = player, %World{} = world, victory \\ nil) do
-    cond do
-      # how am I gonna trigger the event?
-      victory == nil ->
-        input = IO.gets "> "
-        {_, new_player, new_world} = process_command(input, player, world) |>
-        Interface.render_output
-        game_loop(new_player, new_world, victory)
-      true ->
-        "You win!"
+    # Interface.controls(input, player, world).()
+    case Interface.controls(input, player, world) do
+      {module, func_name, args} -> Kernel.apply(module, func_name, args)
+      # {:error, message} -> nil # render message
     end
   end
+
+  # ASSUMPTION: I don't think we're going to need a case where 
+  # the event is run and then a seperate description is output
+
+  # What happens when you pick up an object?
+  # Gets added to player's inventory
+  # Gets removed from current location
+  
+
+  # What should the game loop do?
+  # Run an event if there is one
+  # Show a description (of the event or location)
+  # Take input (from player or maybe passed in?)
+  # Fetch the corresponding command for the player input
+  # Run that command
+  # Return the new game state
+  # Pass that state into a new game loop call if not incrementally called
+
+  # We should maybe have just one function here. Maybe also break down this loop into a pipe chain
+
+  # this one is for a game loop call without an event
+
+
+  # what would we call a recurse game loop function
+    # game_turn 
+    # render_new_game_state
+
+
+
+
+  # this implementation has unhandled cases  
+  def game_loop(input \\ nil, event \\ nil, incremental \\ false, %Player{} = player, %World{} = world) do
+    Interface.render_output({:ok, player, world})
+    cond do
+      input == nil -> input = IO.gets "> "
+    end   
+    cond do
+      event == %Event{} -> event |> Interface.render_event 
+    end  
+    
+    {_, new_player, new_world} = process_command(input, player, world)
+    case incremental do
+      false -> game_loop(new_player, new_world)
+      true  -> {new_player, new_world}
+    end  
+  end
+
+  # this one is for a game loop call with an event 
+  
+  # def game_loop(%Player{} = player, %World{} = world, %Event{} = event) do
+  #   Interface.render_event(world)
+  #   input = IO.gets "> "
+  #   {_, new_player, new_world} = process_command(input, player, world)
+  #   game_loop(new_player, new_world)
+  # end  
 
   # need to pass game loop an event to run if relevant
   # how do we know when events are to be run?
@@ -37,22 +93,14 @@ defmodule Gmylm do
   # Run event when player arrives at location 1st time?
   # 'Visited' flag for locations?
 
-  def event_loop(%Player{} = player, %World{} = world) do
-    # Need a way to divide events into parts depending on where ... is
-    # Maybe split on ..., then add it back in for output...like at the end of each block of text
-    # Just delete or ... the last empty string
-  end
-
-  def event_loop(%Player{} = player, %World{} = world) do
-
-  end
-
   def start_game do
     {_status, player, world} = Gmylm.initialize_game
-    game_loop(player, world, nil)
+    Enum.find(world.events, fn(event) -> event.name == "Start Game" end) |>
+    Gmylm.Interface.render_event
+    game_loop(player, world)
   end
 
-  def console(%Player{} = player, [%Location{}|_] = world) do
+  def console(%Player{} = player, %World{} = world) do
 
   end
 end

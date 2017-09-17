@@ -4,16 +4,62 @@ defmodule Gmylm.InterfaceTest do
   """
   use ExUnit.Case, async: true
   doctest Gmylm.Interface
+  alias Gmylm.Player
+  alias Gmylm.World
+  alias Gmylm.World.Location
+  alias Gmylm.World.Object
+  alias Gmylm.Interface
+
+  setup_all do
+    world     = World.initialize_world
+    poop_trap = %Object{name: "Poop Trap"}
+    player    = %Player{location: %Location{Enum.find(world.locations, nil, fn(location) -> location.down end) | on_ground: [poop_trap]}}
+    {:ok, player: player, world: world, poop_trap: poop_trap}
+  end
 
   test "it exists" do
     assert Gmylm.Interface.__info__(:functions)
   end
 
-  test "it has a game loop" do
+  describe "Interface.controls/3" do
+    test "it should return a tuple of module, function, and arguments for north" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("north\n", player, world) == {Player, :move, [:north, player, world]}
+    end
 
-  end
+    test "it should return a tuple of module, function, and arguments for east" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("east\n", player, world) == {Player, :move, [:east, player, world]}
+    end
 
-  test "north calls Player.move" do
+    test "it should return a tuple of module, function, and arguments for south" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("south\n", player, world) == {Player, :move, [:south, player, world]}
+    end
 
+    test "it should return a tuple of module, function, and arguments for west" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("west\n", player, world) == {Player, :move, [:west, player, world]}
+    end
+
+    test "it should return a tuple of module, function, and arguments for up" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("up\n", player, world) == {Player, :move, [:up, player, world]}
+    end
+
+    test "it should return a tuple of module, function, and arguments for down" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("down\n", player, world) == {Player, :move, [:down, player, world]}
+    end
+
+    test "it should return a tuple of module, function, and arguments for look" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("look\n", player, world) == {Player, :look, [player, world]}
+    end
+
+    test "it should return a tuple of module, function, and arguments for quit" do
+      {world, player} = {%World{}, %Player{}}
+      assert Interface.controls("quit\n", player, world) == {Gmylm, :game_loop, [player, world, "victory"]}
+    end
   end
 end

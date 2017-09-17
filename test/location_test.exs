@@ -28,6 +28,7 @@ defmodule Gmylm.World.LocationTest do
   end
 
   describe "%Location{}" do
+    # get rid of these garbage tests
     test "it has an on ground attribute that defaults to an empty List" do
       assert %Location{}.on_ground == []
     end
