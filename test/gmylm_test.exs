@@ -20,27 +20,47 @@ defmodule GmylmTest do
     {:ok, game: game, player: player, locations: locations, objects: objects, events: events, world: world}
   end
 
-
-  # Problem Description:
-  # Game loop function is recursive
-  # Need to be able to pass instructions from within game loop but my test code can't get there
-  
-  # One solution:
-  # Pass a list of instructions to one definition of game_loop/3
-  # When game_loop/3 receives a list of instructions, invoke the instruction then call itself with the invoked instruction removed
-  # Maybe pass a list of tuples where first element is instruction and second is assertions
-
-  # describe "acceptance test" do
-  #   test "it plays through the game" do
-  #      {_, player, world} = Gmylm.initialize_game
-  #      {_, player, world} = Gmylm.game_loop(player, world)
-
-  #   end  
-  # end  
+  @tag :play_through
+  describe "acceptance test" do
+    test "it plays through the game" do
+       {_, player, world} = Gmylm.initialize_game
+       {player, world}    = Gmylm.game_loop("west\n", nil, true, player, world)
+       assert player.location.name == "The Park"
+       {player, world}    = Gmylm.game_loop("west\n", nil, true, player, world)
+       assert player.location.name == "My Secret Stash"
+       assert capture_io(Gmylm.game_loop("look lunchbox\n", nil, true, player, world)) == "Lunchbox description"
+       
+    end  
+  end  
 
   # Maybe player should be part of world (like as a player key of the world struct)
 
-  describe "game_loop/3" do
+  describe "get_input_if_not_provided/1" do
+    test "it returns passed input unchanged" do
+      input = "north\n"
+      assert input == Gmylm.get_input_if_not_provided(input) 
+    end
+
+    # Figure out a way to break out of IO.gets 
+    # test "it prompts the user for input if input is not passed" do
+    #   input = nil
+    #   assert capture_io(Gmylm.get_input_if_not_provided(input)) =~ "> "
+    #   IO.puts :stdio, "break out"  
+    # end  
+  end  
+
+  # Figure out a way to silence STDOUT
+
+  describe "game_loop/5" do
+    test "it updates the game state" do
+      {_, player, world} = Gmylm.initialize_game
+      {updated_player, updated_world} = Gmylm.game_loop("west\n", nil, true, player, world)
+      assert updated_player.location.name == player.location.west
+    end 
+
+    # test "it "
+
+
   #   test "it has a prompt", %{world: world} do
   #           Gmylm.game_loop(%Player{}, world, "victory")
 

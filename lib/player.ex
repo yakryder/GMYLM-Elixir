@@ -50,6 +50,18 @@ defmodule Gmylm.Player do
     {:ok, "#{player.location.description}\n\n#{Location.formatted_exits(player.location)}", player, world}
   end
 
+  @doc """
+  Looks at an object.  
+  """
+
+  @spec look(%Object{}) :: {atom, String.t}
+
+  def look(%Object{}) do
+      
+  end
+
+
+
   @spec pick_up(%Player{}, %Object{}) :: {atom, %Player{}, %Object{}}
 
   def pick_up(%Player{} = player, %Object{} = object) do

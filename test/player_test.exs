@@ -95,7 +95,7 @@ defmodule Gmylm.PlayerTest do
       assert player_move_back_status == :ok
       assert player_moved_back.location.name == "Hallway"
     end
-  end
+  end 
 
   describe "look/2" do
     test "looking shows the description of the player's current location", %{player: player, world: world} do
@@ -114,6 +114,15 @@ defmodule Gmylm.PlayerTest do
       assert world.__struct__ == Gmylm.World
     end
   end
+
+  describe "look/3" do
+    test "looking at an object that exists at the current location displays a description of that object", %{player: player, world: world} do
+      
+    end  
+
+    test "looking at an object that does not exist at the current location displays a 'doesn't exist' message" do
+    end  
+  end 
 
   describe "pick_up/3" do
     test "picking up an object in player's location adds it to the inventory", %{player: player, poop_trap: poop_trap} do

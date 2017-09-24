@@ -43,7 +43,7 @@ defmodule Gmylm do
   # What should the game loop do?
   # Run an event if there is one
   # Show a description (of the event or location)
-  # Take input (from player or maybe passed in?)
+  # Get input from player if not passed in take input 
   # Fetch the corresponding command for the player input
   # Run that command
   # Return the new game state
@@ -58,17 +58,25 @@ defmodule Gmylm do
     # game_turn 
     # render_new_game_state
 
-
-
-
   # this implementation has unhandled cases  
+
+
+  def get_input_if_not_provided(input) do
+    case input do
+      nil  -> IO.gets "> "
+      _    -> input
+    end  
+  end  
+
   def game_loop(input \\ nil, event \\ nil, incremental \\ false, %Player{} = player, %World{} = world) do
+    # BEAUTIFUL PIPE CHAIN
     Interface.render_output({:ok, player, world})
-    cond do
-      input == nil -> input = IO.gets "> "
-    end   
-    cond do
-      event == %Event{} -> event |> Interface.render_event 
+    get_input_if_not_provided(input)
+    # IO.puts "DEBUG GAME LOOP, INPUT IS: #{input}"
+   
+    case event do
+       %Event{} -> event |> Interface.render_event 
+       _        -> event
     end  
     
     {_, new_player, new_world} = process_command(input, player, world)

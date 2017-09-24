@@ -22,16 +22,20 @@ defmodule Gmylm.Interface do
   # process_input/map_input_to_command/get_command_from_input should pipe that map to the Map.get
   # run_command should be a seperate function that actually executes the code altering the world state
   # bring back status codes?
+  # We have lots of commands that take arguments.
+  # The possible range of arguments should not need to be defined at compile time.
+  # Seems like regex has to be involved.
   def controls(input, %Player{} = player, %World{} = world) do
     %{
-       "north\n" => {Player, :move, [:north, player, world]},
-       "east\n"  => {Player, :move, [:east, player, world]},
-       "south\n" => {Player, :move, [:south, player, world]},
-       "west\n"  => {Player, :move, [:west, player, world]},
-       "up\n"    => {Player, :move, [:up, player, world]},
-       "down\n"  => {Player, :move, [:down, player, world]},
-       "look\n"  => {Player, :look, [player, world]},
-       "quit\n"  => {Gmylm, :game_loop, [player, world, "victory"]},
+       "north\n"         => {Player, :move, [:north, player, world]},
+       "east\n"          => {Player, :move, [:east, player, world]},
+       "south\n"         => {Player, :move, [:south, player, world]},
+       "west\n"          => {Player, :move, [:west, player, world]},
+       "up\n"            => {Player, :move, [:up, player, world]},
+       "down\n"          => {Player, :move, [:down, player, world]},
+       "look\n"          => {Player, :look, [player, world]},
+       "look lunchbox\n" => {Player, :look, [player, world]},
+       "quit\n"          => {Gmylm, :game_loop, [player, world, "victory"]},
      } |> Map.get(input, {__MODULE__, :invalid_command, []})
   end
 
