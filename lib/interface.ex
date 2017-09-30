@@ -8,23 +8,6 @@ defmodule Gmylm.Interface do
   alias Gmylm.World.Event
   alias Gmylm.Interface
 
-  # GenServer this potentially
-  # ?? Optional parameter to controls to pass in module
-  # defaulting to player
-  # pass in module
-  # More details from Ben or Mock as noun not verb
-
-  # Responsibilities
-  # - receive a command
-  # - returns a tuple of module, function name, and list of arguments
-
-  # Controls should be a bare map
-  # process_input/map_input_to_command/get_command_from_input should pipe that map to the Map.get
-  # run_command should be a seperate function that actually executes the code altering the world state
-  # bring back status codes?
-  # We have lots of commands that take arguments.
-  # The possible range of arguments should not need to be defined at compile time.
-  # Seems like regex has to be involved.
   def controls(input, %Player{} = player, %World{} = world) do
     %{
        "north\n"         => {Player, :move, [:north, player, world]},
@@ -38,6 +21,20 @@ defmodule Gmylm.Interface do
        "quit\n"          => {Gmylm, :game_loop, [player, world, "victory"]},
      } |> Map.get(input, {__MODULE__, :invalid_command, []})
   end
+
+  def input_to_command_map(%Player{} = player, %World{} = world) do
+    %{
+      ~r/north/         => {Player, :move, [:north, player, world]},
+      ~r/east/          => {Player, :move, [:east, player, world]},
+      ~r/south/         => {Player, :move, [:south, player, world]},
+      ~r/west/          => {Player, :move, [:west, player, world]},
+      ~r/up/            => {Player, :move, [:up, player, world]},
+      ~r/down/          => {Player, :move, [:down, player, world]},
+      ~r/look/          => {Player, :look, [player, world]},
+      ~r/look \w+/      => {Player, :look, [player, world]},
+      ~r/quit/          => {Gmylm, :game_loop, [player, world, "victory"]},
+    }
+  end  
 
   # maybe?
   def invalid_command do

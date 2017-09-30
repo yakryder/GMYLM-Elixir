@@ -21,6 +21,20 @@ defmodule Gmylm.InterfaceTest do
     assert Gmylm.Interface.__info__(:functions)
   end
 
+
+  describe "Interface.input_to_command_map/2" do
+    test "it is a map with regex keys and tuple values", %{player: player, world: world} do
+      input_to_command_map = Interface.input_to_command_map(player, world)
+      assert is_map(input_to_command_map)
+
+      itc_keys   = Map.keys(input_to_command_map)
+      itc_values = Map.values(input_to_command_map) 
+      
+      assert Enum.all?(itc_keys, fn(key) -> Regex.regex?(key) end) == true
+      assert Enum.all?(itc_values, fn(value) -> is_tuple(value) end) == true
+    end  
+  end  
+
   describe "Interface.controls/3" do
     test "it should return a tuple of module, function, and arguments for north" do
       {world, player} = {%World{}, %Player{}}

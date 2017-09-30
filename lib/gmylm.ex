@@ -23,10 +23,10 @@ defmodule Gmylm do
   # - delegate to Interface.controls
   # - invoke the returned function
   def process_command(input, %Player{} = player, %World{} = world) do
-    # do you want to check if valid first here?
-    # IO.puts "DEBUG: Input was #{input}"
-    # Interface.controls(input, player, world).()
-    case Interface.controls(input, player, world) do
+    sanitized_input      = String.replace(input, "\n", "")
+    input_to_command_map = Interface.input_to_command_map(player, world)
+    Enum.find(input_to_command_map, "Command not found", fn {k, v} -> Regex.match?(k, sanitized_input) end)
+    case Interface.input_to_command_map(player, world) do
       {module, func_name, args} -> Kernel.apply(module, func_name, args)
       # {:error, message} -> nil # render message
     end
