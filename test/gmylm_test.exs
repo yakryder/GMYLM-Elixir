@@ -28,7 +28,7 @@ defmodule GmylmTest do
        assert player.location.name == "The Park"
        {player, world}    = Gmylm.game_loop("west\n", nil, true, player, world)
        assert player.location.name == "My Secret Stash"
-       assert capture_io(Gmylm.game_loop("look lunchbox\n", nil, true, player, world)) == "Lunchbox description"
+       # assert capture_io(Gmylm.game_loop("look lunchbox\n", nil, true, player, world)) == "Lunchbox description"
        
     end  
   end  
@@ -40,13 +40,6 @@ defmodule GmylmTest do
       input = "north\n"
       assert input == Gmylm.get_input_if_not_provided(input) 
     end
-
-    # Figure out a way to break out of IO.gets 
-    # test "it prompts the user for input if input is not passed" do
-    #   input = nil
-    #   assert capture_io(Gmylm.get_input_if_not_provided(input)) =~ "> "
-    #   IO.puts :stdio, "break out"  
-    # end  
   end  
 
   # Figure out a way to silence STDOUT
@@ -57,19 +50,7 @@ defmodule GmylmTest do
       {updated_player, updated_world} = Gmylm.game_loop("west\n", nil, true, player, world)
       assert updated_player.location.name == player.location.west
     end 
-
-    # test "it "
-
-
-  #   test "it has a prompt", %{world: world} do
-  #           Gmylm.game_loop(%Player{}, world, "victory")
-
-  #     assert capture_io(Gmylm.game_loop(%Player{}, world)) =~ "> "
-  #     Gmylm.game_loop(%Player{}, world, "victory")
-  #   end
   end
-
-
 
   # Hey this is to mock some process command calls
   describe "process_command/3" do
