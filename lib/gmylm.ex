@@ -71,7 +71,7 @@ defmodule Gmylm do
   def game_loop(input \\ nil, event \\ nil, incremental \\ false, %Player{} = player, %World{} = world) do
     # BEAUTIFUL PIPE CHAIN
     Interface.render_output({:ok, player, world})
-    get_input_if_not_provided(input)
+    input = get_input_if_not_provided(input)
     # IO.puts "DEBUG GAME LOOP, INPUT IS: #{input}"
    
     case event do
