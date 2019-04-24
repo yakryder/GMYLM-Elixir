@@ -28,11 +28,16 @@ defmodule Gmylm do
     # Interface.controls(input, player, world).()
     case Interface.controls(input, player, world) do
       {module, func_name, args} -> Kernel.apply(module, func_name, args)
-      # {:error, message} -> nil # render message
+      {:error} -> handle_command_error({:error}, player, world)
     end
   end
 
-  # ASSUMPTION: I don't think we're going to need a case where 
+  defp handle_command_error({:error}, %Player{} = player, %World{} = world) do
+    IO.puts("That's not something you can do")
+    {:ok, player, world}
+  end
+
+  # ASSUMPTION: I don't think we're going to need a case where
   # the event is run and then a seperate description is output
 
   # What happens when you pick up an object?
@@ -73,42 +78,23 @@ defmodule Gmylm do
     Interface.render_output({:ok, player, world})
     input = get_input_if_not_provided(input)
     # IO.puts "DEBUG GAME LOOP, INPUT IS: #{input}"
-   
+
     case event do
-       %Event{} -> event |> Interface.render_event 
        _        -> event
-    end  
-    
-    {_, new_player, new_world} = process_command(input, player, world)
+    end
+
+    {_, updated_player, updated_world} = process_command(input, player, world)
+
     case incremental do
-      false -> game_loop(new_player, new_world)
-      true  -> {new_player, new_world}
-    end  
+      false -> game_loop(updated_player, updated_world)
+      true  -> {updated_player, updated_world}
+    end
   end
-
-  # this one is for a game loop call with an event 
-  
-  # def game_loop(%Player{} = player, %World{} = world, %Event{} = event) do
-  #   Interface.render_event(world)
-  #   input = IO.gets "> "
-  #   {_, new_player, new_world} = process_command(input, player, world)
-  #   game_loop(new_player, new_world)
-  # end  
-
-  # need to pass game loop an event to run if relevant
-  # how do we know when events are to be run?
-  # Certain commands run events in certain contexts?
-  # Run event when player arrives at location 1st time?
-  # 'Visited' flag for locations?
 
   def start_game do
     {_status, player, world} = Gmylm.initialize_game
     Enum.find(world.events, fn(event) -> event.name == "Start Game" end) |>
     Gmylm.Interface.render_event
     game_loop(player, world)
-  end
-
-  def console(%Player{} = player, %World{} = world) do
-
   end
 end
