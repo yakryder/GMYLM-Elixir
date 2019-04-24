@@ -25,7 +25,7 @@ defmodule Gmylm.World.Object do
 
   def initialize_objects do
     "lib/data/object_data.yml"             |>
-    YamlElixir.read_from_file(atoms: true) |>
+    YamlElixir.read_from_file!(atoms: true) |>
     Enum.map(fn(object_map) -> Map.merge(%Object{}, object_map) end)
   end
 end

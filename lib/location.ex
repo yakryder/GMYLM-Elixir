@@ -29,7 +29,7 @@ defmodule Gmylm.World.Location do
   # Deviant piping
   def initialize_locations do
     "lib/data/location_data.yml"           |>
-    YamlElixir.read_from_file(atoms: true) |>
+    YamlElixir.read_from_file!(atoms: true) |>
     Enum.map(fn(location_map) -> Map.merge(%Location{}, location_map) end)
   end
 

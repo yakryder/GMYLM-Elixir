@@ -51,7 +51,7 @@ defmodule Gmylm.World.Event do
 
   def initialize_events do
     "lib/data/event_data.yml"              |>
-    YamlElixir.read_from_file(atoms: true) |>
+    YamlElixir.read_from_file!(atoms: true) |>
     Enum.map(&convert_to_event/1)
   end
 
