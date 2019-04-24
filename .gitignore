@@ -19,4 +19,7 @@ erl_crash.dump
 # Also ignore archive artifacts (built via "mix archive.build").
 *.ez
 
+# VS Code Stuff
+.elixir_ls
+
 architecture/zgmylmdata.txt
